@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<project name="[E2F] IBK.Web.UI" default="main" basedir=".">
+	<description>Wrapper Build Script </description>
+	<propertyfile file="../build.properties">
+		<entry key="version.minor" type="int" operation="+" value="1" pattern="00" />
+	</propertyfile>
+	<property environment="env" />
+	<target name="initialize">
+		<property name="packageName" value="IBK.Web.UI" />
+		<property name="vendor" value="MOCOMSYS" />
+		<property name="version" value="1.0.1" />
+		<property name="dist" location="release" />
+		<property name="lib" location="WebContent\WEB-INF\lib" />
+		<property name="src" location="src" />
+		<property name="classes" location="bin" />
+		<tstamp>
+			<format property="today" pattern="yyyy-MM-dd" locale="ko" />
+		</tstamp>
+		<tstamp>
+			<format property="project.year" pattern="yyyy" locale="ko" />
+		</tstamp>
+		<tstamp>
+			<format property="currentTime" pattern="yyyyMMddHHmm" locale="ko" />
+		</tstamp>
+		<path id="classpath">
+			<fileset dir="${lib}" includes="*.jar" />
+		</path>
+
+		<echo message="+---------------------------------------------------------------------------------+" />
+		<echo message="  ${packageName} ${version.minor} [${TODAY}]" />
+		<echo message="                                       Copyright (c) ${project.year} ${vendor}" />
+		<echo message="+---------------------------------------------------------------------------------+" />
+		<echo message="  -> OS : ${os.name}" />
+		<echo message="  -> Java : ${java.vendor} ${java.version}" />
+		<echo message="  -> Source : ${src}" />
+		<echo message="  -> Target : ${dist}" />
+		<echo message="+---------------------------------------------------------------------------------+" />
+
+	</target>
+
+	<target name="clean" depends="initialize">
+		<delete dir="${dist}/current" failonerror="false" />
+		<delete dir="${dist}/current/META-INF" failonerror="false" />
+		<mkdir dir="${dist}/current" />
+		<mkdir dir="${dist}/current/META-INF" />
+		<mkdir dir="${dist}/${today}" />
+	</target>
+
+	<target name="Create-Manifest" depends="clean">
+		<manifest file="${dist}/current/META-INF/${packageName}.manifest">
+			<attribute name="Application-Name" value="${packageName}" />
+			<attribute name="Application-Version" value="${version}" />
+			<!-- OSGi Implements Attribute -->
+			<attribute name="Bundle-Name" value="${packageName}" />
+			<attribute name="Bundle-Description" value="${version}" />
+			<attribute name="Bundle-Vendor" value="${vendor}" />
+			<attribute name="Bundle-Version" value="${version}" />
+			<attribute name="Bundle-Activator" value="com.zero.icewolf.osgi.Activator" />
+			<attribute name="Import-Package" value="org.osgi.framework" />
+		</manifest>
+	</target>
+
+	<target name="Compile-Source" depends="clean">
+		<javac srcdir="${src}" destdir="${dist}/current" nowarn="on" debug="on" target="1.6" encoding="UTF-8">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="wsdl-to-jar">
+		<delete file="WebContent\WEB-INF\lib\mocomsysSalesforce.jar" />
+		<java classname="com.sforce.ws.tools.wsdlc" fork="true" maxmemory="128m">
+			<arg value="enterprise.wsdl" />
+			<arg value="WebContent\WEB-INF\lib\mocomsysSalesforce.jar" />
+			<classpath>
+				<pathelement location="WebContent\WEB-INF\lib\wsc-22.jar" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="Create-JAR" depends="Create-Manifest,Compile-Source">
+		<jar jarfile="${dist}/${today}/${packageName}.${version}.${currentTime}.jar" manifest="${dist}/current/META-INF/${packageName}.manifest">
+			<fileset dir="${dist}/current" />
+		</jar>
+		<jar jarfile="${dist}/${packageName}.jar" manifest="${dist}/current/META-INF/${packageName}.manifest">
+			<fileset dir="${dist}/current" />
+		</jar>
+	</target>
+
+	<target name="Remove-Dist" depends="Create-JAR">
+		<delete file="${dist}/current/META-INF/*" failonerror="false" />
+		<delete file="${dist}/current/*" failonerror="false" />
+		<delete dir="${dist}/current/META-INF" failonerror="false" />
+		<delete dir="${dist}/current" failonerror="false" />
+	</target>
+
+	<target name="main" depends="wsdl-to-jar, Remove-Dist" />
+	
+	<target name="War" depends="Create-JAR">
+		<copy file="${dist}/${packageName}.jar" todir="WebContent\WEB-INF\lib" />
+		<zip destfile="dist/IBK.Web.UI.war" basedir="./WebContent" />
+	</target>
+
+</project>

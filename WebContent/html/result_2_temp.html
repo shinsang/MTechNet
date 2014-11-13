@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>Mocomsys TechNet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../img/logo/mLogo.png" />
+    <!-- START 필요 스타일 -->
+    <link rel="stylesheet" href="../stylesheets/main.css"/>    
+    <link rel="stylesheet" href="../stylesheets/search.css">
+    <link rel="stylesheet" href="../stylesheets/dropdown/dropkick.css">
+    <!-- //END 필요 스타일 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="../js/dropkick.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		
+		function eventonclick() {
+    	window.open('test.html','검색결과',width='500px',height='400px');
+  		}
+    </script>
+	
+</head>
+
+
+<div id="result_TopBar" class="container">
+    <header>
+       		<div id="topBar2" >
+       		
+			
+			<select name="personal" class="mama_bear">
+				<option>Log-In</option>
+				<option>개인정보 수정</option>
+				<option>Log-Out</option>
+				<option>설정</option>
+			</select>   
+			<select name="newWrite" class="mama_bear">
+				<option>신규 작성</option>
+			</select>
+			<select name="easyMenu" class="mama_bear">
+				<option>간편 메뉴</option>
+				<option>새글 알림</option>
+				<option>게시글 확인</option>
+				<option>개인정보 확인</option>
+				<option>Sign Out</option>
+			</select>
+			
+			    
+        </div>
+       
+           
+			<!-- <div><img src="../img/logo.jpg" style="float: left"/>
+				<form class="search-wrapper2 result">					 
+			        <input type="text" placeholder="Search here..." required="">
+			        <button type="submit" onclick="eventonclick()">Search</button>
+			</form></div>    -->
+       </div>
+    </header>
+    <script>
+	//꼭 여기 있어야만, selectbox 가 정상적으로 생성됨.
+	$(function () {
+			$('.mama_bear').dropkick();
+		});
+</script>
+	<div style="margin-top: 3%">
+	<img src="../img/logo/logo.jpg" width="8%" height="80%" style="float:left;margin-top:0.5%;margin-left:10%;margin-right: 15%"/>	
+				<form class="search-wrapper2 result">					 
+			        <input type="text" placeholder="Search here..." required="">
+			        <button type="submit" onclick="eventonclick()">Search</button>
+			</form>
+			</div>  
+    <div class="reulst_Contents">
+    	 <div class="well">
+			   
+        </div>
+    </div>
+<body>
+
+    <footer>
+    	<!--
+        <div class="navbar-mobile btn-group btn-group-justified navbar-fixed-bottom">
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">About</span>
+            </a>
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">상위로</span>
+            </a>
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-download-alt"></span>
+                <span class="text">종료</span>
+            </a>
+        </div>
+       -->
+       <div style="z-index:99;bottom:0px;float:right:left:0px;right:0px;position:absoulte !important; position:fixed;">
+		Started by 2014-09-16 , Main Page , (주)매력대리's
+		</div>
+    </footer>
+	</div>
+</div>
+</body>
+</html>

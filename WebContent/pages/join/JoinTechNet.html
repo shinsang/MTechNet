@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>TechNet Join</title>
+  <meta name="author" content="매력대리's">
+  <link rel="shortcut icon" href="http://static02.join_techNet.com/logo/hkdc/favicon.ico">
+  <link rel="icon" href="../../img/join/mLogo.png">
+  <link rel="stylesheet" type="text/css" media="all" href="../../stylesheets/join/join_styleSheet.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../../stylesheets/join/join_responsive.css">
+</head>
+
+<body>
+
+	<section id="container">
+		<span class="chyron"><em><a href="../../index.html">&laquo; back to the home</a></em></span>
+		<h2>Mocomsys TechNet 회원가입</h2>
+		<form name="join_techNet" id="join_techNet-form" method="post" action="#">
+		<div id="wrapping" class="clearfix">
+			<section id="aligned">
+			<input type="button" id="confirmID" class="btninput" value="중복확인"/>
+			<input type="text" name="id" id="id" placeholder="Your ID" autocomplete="off" tabindex="1" class="txtinput">
+			<input type="password" name="passWord1" id="passWord1" placeholder="Write your password" autocomplete="off" tabindex="1" class="txtinput"><input type="button" id="confirmID" class="btninput" value="확인"/>
+			<input type="password" name="passWord2" id="passWord2" placeholder="Confirm your password" autocomplete="off" tabindex="1" class="txtinput">
+			<input type="text" name="name" id="name" placeholder="Your name" autocomplete="off" tabindex="1" class="txtinput">
+			<input type="email" name="email" id="email" placeholder="Your e-mail address" autocomplete="off" tabindex="2" class="txtinput">
+			<input type="tel" name="telephone" id="telephone" placeholder="Phone number?(optional)" tabindex="4" class="txtinput">
+			</section>
+		</form>
+			<section id="aside" class="clearfix">
+				<section id="recipientcase">
+				<h3>Recipient:</h3>
+				
+					<select id="recipient" name="권한설정" tabindex="5" class="selmenu">
+  						<option value="partner">파트너 고객사</option>
+  						<option value="employee">직원</option>
+  						<option value="manager">운영진</option>
+  						<option value="admin">사이트관리자</option>
+					</select>
+				</section>				
+				<section id="prioritycase">
+					<h3>Enter support code:</h3>					
+						<input type="text" style="width: 48%" name="supportCode" id="code" placeholder="Support code" autocomplete="off" tabindex="1" class="txtinput">
+				</section>
+			</section>
+		</div>
+		<section id="buttons">
+			<input type="reset" name="reset" id="resetbtn" class="resetbtn" value="다시 작성">
+			<input type="submit" name="submit" id="submitbtn" class="submitbtn" tabindex="7" value="회원 가입">
+			<br style="clear:both;">
+		</section>
+	</section>
+
+</body>
+</html>

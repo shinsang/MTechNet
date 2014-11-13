@@ -1,0 +1,184 @@
+body {
+    padding-top: 55px;
+    padding-bottom: 70px;
+}
+#topBar{
+	z-index:98;
+	top:0px;
+	left:0px;
+	right:0px;
+	position : absolute;
+	margin:0 auto; 
+	!important; 
+	position:fixed;
+	display: block;
+	background: #DD0000;
+	height: 12%;
+	float: right;
+	
+}
+#topBar2{
+	z-index:98;
+	top:0px;
+	left:0px;
+	right:0px;
+	position : relative;
+	margin:0 auto; 
+	!important; 
+	display: block;
+	background: #D83C3C;
+	height: 70px;
+	float: right;
+	
+}
+
+#footBar{
+	z-index:99;
+	bottom:0px;
+	float:right;
+	right:0px;
+	position:absolute ;
+	!important; 
+	position:fixed;
+	display: block;
+}
+nav {
+  background-color:#D83C3C;
+  height:40px;
+}
+ 
+ 
+nav ul {
+  font-family: Arial, Verdana;
+  font-size: 20px;
+  position:absolute;
+  list-style: none;
+  float: left;
+  
+  margin-top: 0;
+  margin-left: 70%;
+}
+ 
+nav ul li {
+  float: right;
+ 
+}
+ 
+nav li ul { 
+  display: none; 
+}
+ 
+nav ul li a {
+  display: block;
+  float:left;
+  text-decoration: inherit;
+  background: #D83C3C;
+  color: #ffffff;  
+  white-space: nowrap;
+  padding: 0px 10px;
+  margin-left: -70%;
+  height:auto; /* Width and height of top-level nav items */
+  width:60px;
+  font-size: 16px;
+ 
+ 
+}
+nav ul li a:hover { 
+  background: #D83C3C; 
+  display: block;  
+}
+nav li:hover ul {
+  display: block;  
+  height:30px;
+}
+ 
+nav li:hover li {
+  font-size: 11px;
+ 
+}
+ 
+nav li:hover a { 
+  background: #ffffff; 
+  height:30px; /* Height of lower-level nav items is shorter than main level */
+}
+ 
+nav li:hover li a:hover { 
+  background: #7DB0CC;/* 마우스가 올라갔을때 바뀌는 색상 */ 
+  display: block;
+  text-align: left;
+  float: left;
+}
+nav ul li ul li a {
+    text-align: left; /* Top-level items are centered, but nested list items are left-aligned */
+   	width: 130px;
+   	height: 20px;
+   	margin-top: 50px;
+   	margin-right: 200px;
+   	margin-bottom: -60px;
+   	color: #D83C3C;
+   	font-size: 15px;
+   	font-weight: 700;
+   }
+/* END NAV MENU */
+/* 상단 메뉴의 브랜드 이름 위치를 center로 변경 */
+.navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {
+    display: inline-block;
+    float:none;
+}
+
+#bar {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 50px;
+   background: yellow;
+}
+.btn-default {
+  color: #333333;
+  float:right;
+  margin: 10px ;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+

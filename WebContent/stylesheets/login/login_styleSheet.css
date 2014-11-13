@@ -1,0 +1,192 @@
+/** basic default styles **/
+<style>
+html { margin: 0; padding: 0; }
+
+body { 
+height: 101%; 
+font-size: 62.5%; 
+font-family: "Trebuchet MS", Arial, Tahoma, sans-serif; 
+color: #ffffff; 
+background: #fff ; 
+padding-top: 10px; 
+}
+
+a { color: #4681da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h2 { 
+border-bottom: 1px solid #ddd; 
+border-top: 1px solid #ddd; 
+color: #363636;
+font-family: "Droid Serif", Georgia, serif; 
+font-size: 2.6em; 
+line-height: 1.8em; 
+font-weight: 500; 
+margin-top: 25px; 
+margin-bottom: 25px; 
+padding: 12px 0; 
+text-align: center; 
+}
+
+h3 {
+letter-spacing: -0.04em;
+font-weight: bold;
+font-size: 1.44em;
+margin-bottom: 10px;
+}
+
+span.chyron { font-size: 1.2em; padding-top: 10px; }
+
+/** main blocks **/
+#container { 
+display: block;
+max-width: 800px;
+margin: 0 auto; 
+margin-top: 5px; 
+margin-bottom: 66px;
+padding: 20px 15px; 
+background: #fff; 
+border-radius: 6px; 
+-webkit-border-radius: 6px; 
+-moz-border-radius: 6px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box; 
+box-sizing: border-box;  
+}
+
+
+/** the form elements **/
+#login_techNet-form { box-sizing: border-box; }
+
+
+
+
+#login_techNet-form .txtinput { 
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+margin-bottom: 20px;
+font-size: 1.55em;
+padding: 11px 25px;
+padding-left: 55px;
+width: 65%;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+
+#login_techNet-form .txtinput:focus { 
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+outline: 0 none; 
+}
+
+
+#login_techNet-form input#id {
+background: #fff url('../../img/login/id.png') 5px 4px no-repeat;
+}
+#login_techNet-form input#passWord1 {
+background: #fff url('../../img/login/password1.png') 5px 4px no-repeat;
+}
+
+
+
+#login_techNet-form textarea {
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+margin-bottom: 15px;
+font-size: 1.5em;
+padding: 11px 25px;
+padding-left: 55px;
+width: 90%;
+height: 180px;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+
+
+#login_techNet-form #slider { width: 60%; }
+
+#login_techNet-form #aligned { 
+box-sizing: border-box; 
+float: left; 
+width: 450px; 
+margin-right: 50px; 
+}
+#login_techNet-form #aside {
+	float: left;
+	width: 250px;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/** button 임의 추가 **/
+#login_techNet-form .btninput { 
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+margin-bottom: 20px;
+font-size: 8px;
+float: right;
+padding: 0px 0px;
+width: 14%;
+alignment-baseline: central;
+alignment-adjust : auto;
+height: 35px;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+
+#login_techNet-form .btninput:focus { 
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+outline: 0 none; 
+}
+
+#login_techNet-form input#confirmID {
+background: #fff;
+}
+/** 버튼 추가 끝 **/
+
+
+#wrapping { width: 100%; box-sizing: border-box; }
+
+
+/** @group clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+</style>

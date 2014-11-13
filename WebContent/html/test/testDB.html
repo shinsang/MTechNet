@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="euc-kr">
+	<title>HTML5 Web database</title>
+	<script type="text/javascript">
+	if(window.openDatabase)
+	{
+		var db = {
+			con:null,
+			test:function(){alert('test')},
+			conn:function(){
+				this.con = window.openDatabase('Test_DB','1.0','테스트DB',1024*1024);
+				this.select();
+			},
+			create:function(){
+				this.con.transaction(function(tx){
+
+					tx.executeSql("create table board(id,msg,regdate)");
+				});
+			},
+			insert:function(){
+					var tstID = document.getElementById('tstID').value;
+					var tstMSG = document.getElementById('tstMSG').value;
+					var d = new Date();
+					var regdate = d.getFullYear()+"년"+(d.getMonth() + 1)+"월"+d.getDate()+"일 "+d.getHours()+"시"+d.getMinutes()+"분"+ d.getSeconds()+"초";
+					if(this.con == null) alert("DB를 연결하세요~");
+					this.con.transaction(function(tx){
+						tx.executeSql("insert into board values(?,?,?)",[tstID,tstMSG,regdate]);
+					});
+			},
+			select:function(){
+				if(this.con == null) alert("DB를 연결하세요~");
+				this.con.transaction(function(tx){
+					tx.executeSql("select * from board",[],function(tx,result){
+						document.getElementById('selectTable').innerHTML = "";
+						document.getElementById('selectTable').innerHTML +=  "<tr><td>ID</td><td>내용</td><td>등록일</td></tr>";
+						for(var i=0;i<result.rows.length;i++)
+						{
+							var row = result.rows.item(i);
+							 document.getElementById('selectTable').innerHTML +=  "<tr><td>" + row['id'] + "</td><td>" + row['msg'] + "</td><td>" + row['regdate'] + "</td></tr>";
+						}
+					});
+				});
+			}
+
+		};
+	}
+	else
+	{
+		document.write('웹디비를 사용 할 수 없는 브라우저 입니다.');
+	}
+	</script>
+</head>
+<body>
+<br/>
+<button onclick="db.conn();">연결</button>
+<button onclick="db.create();">테이블생성</button><br/>
+
+ID:<input type="text" id="tstID" style="width:100px;"/>
+msg:<input type="text" id="tstMSG" style="width:100px;"/>
+<button onclick="db.insert();">입력</button>
+
+<button onclick="db.select();">조회</button>
+
+<table id="selectTable" border='1' cellpadding='0' cellspacing='0' bordercolor='#00FFFFF' bordercolorlight='#FFF'></table>
+</body>
+</html>
