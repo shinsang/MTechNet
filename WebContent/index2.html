@@ -23,8 +23,8 @@
  		 	 	return false;
  		 	 });
  		 	 $('#search_btn').click(function() {
- 		 	 alert(document.getElementById(search_txt).value);
- 		 	 	$('#mainContent').load('pages/search/searchList2.jsp?search='+document.getElementById(search_txt).value+');
+ 		 	 alert( $('#search_txt').val());
+ 		 	  $('#mainContent').load('pages/search/searchList2.jsp');
  		 	 	return false;
  		 	 });
  		 	 $('#Login').click(function() {
@@ -68,10 +68,10 @@
 <header>
 		<div id="topBar">
 			<img src="img/logo/RandWLog.png" style="margin-left:5%;margin-right: 5%;float:left;width: 10%;height: 100%"/>
-			<form action="pages/search/searchList2.jsp" name="searchList" class="search-wrapper cf">
+			<form name="searchList" class="search-wrapper cf">
 		        <input type="search" name="search" id='search_txt' placeholder="Search here..." required="">
 		        <!-- <button type="submit" onclick="eventonclick()">Search</button> -->
-		        <button type="submit" id='search_btn'>Search</button>
+		        <button type="submit" id='search_btn' >Search</button>
 		    </form>   
 			<ul class="menu" >
 			<li><a href="#">간편 메뉴</a>
@@ -104,7 +104,7 @@
 	<hr style="width: 90%;float:right"/>
 	
     <div class="content" id="mainContent"><p>
-    <p>Main Page 입니다.</p><br> 
+    <p>testMain Page 입니다.</p><br> 
     <p>location : /TechNet/index.html</p><br> 		
 	
     </div>
