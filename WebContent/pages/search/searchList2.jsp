@@ -109,6 +109,6 @@ String search = request.getParameter("search");
 
 	da.closeConnection();
 %>
-git Test
+git Test2
 </body>
 </html>
