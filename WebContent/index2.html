@@ -7,26 +7,18 @@
 		<script src="js/ajax.js" type="text/javascript"></script>
 		<script src="js/jquery-1.11.1.js"></script>
 		<script>
-		function eventonclick() {
-    		window.open('html/result.html','검색결과',width='500px',height='400px');
-  		}
-  		 function clickWrite() {
-	 		alert("clicked");	       		
-	     	return false;
- 		};
- 		function join_alert(){
- 			alert("clicked"); 
- 		}
+		
  		$(document).ready(function() {
  		 	 $('#writeBoard').click(function() {
  		 	 	$('#mainContent').load('pages/board/newWrite.html');
  		 	 	return false;
  		 	 });
- 		 	 $('#search_btn').click(function() {
- 		 	 alert( $('#search_txt').val());
- 		 	  $('#mainContent').load('pages/search/searchList2.jsp');
- 		 	 	return false;
- 		 	 });
+ 		 	 $('#search_btn').click(function(){				
+				var param=$('#search_txt').val();
+				params='search='+param;
+				$('#mainContent').load('pages/search/searchList2_temp.jsp',params);
+				return false;
+			});
  		 	 $('#Login').click(function() {
  		 	 	$('#mainContent').load('pages/login/login.html');
  		 	 	return false;
