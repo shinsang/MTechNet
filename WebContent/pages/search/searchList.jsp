@@ -13,6 +13,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 String search = request.getParameter("search");
+System.out.println("list1 검색어 = "+search);
 %>
 
 <%
@@ -33,7 +34,7 @@ String search = request.getParameter("search");
 	    System.out.println("본문 = "+body);
 %>
 <br>
- <a href="searchResult.jsp?title=<%=cvo.getContents_title() %>&id=<%=cvo.getContents_id() %>" target="_blank"><%=cvo.getContents_title() %></a><br>
+ <a href="pages/search/searchResult.jsp?title=<%=cvo.getContents_title() %>&id=<%=cvo.getContents_id() %>" target="_blank"><%=cvo.getContents_title() %></a><br>
  <%=cvo.getContents_body() %><br>
 
 <%
@@ -42,6 +43,7 @@ String search = request.getParameter("search");
 
 	da.closeConnection();
 %>
+
 
 </body>
 </html>

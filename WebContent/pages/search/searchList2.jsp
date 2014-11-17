@@ -80,6 +80,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 String search = request.getParameter("search");
+System.out.println("list2 검색어 = "+search);
 %>
 
 <%

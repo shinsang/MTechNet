@@ -31,7 +31,9 @@
  		 	 	return false;
  		 	 });
  		 	 $('#bt_search').click(function() {
- 		 	 	$('#mainContent').load('html/result.html');
+ 		 		var param=$('#search').val();
+				params='search='+param; 
+				$('#mainContent').load('pages/search/searchList.jsp',params);
  		 	 	return false;
  		 	 });
  });
@@ -63,10 +65,10 @@
 <header>
 		<div id="topBar">
 			<img src="img/logo/RandWLog.png" style="margin-left:5%;margin-right: 5%;float:left;width: 10%;height: 100%"/>
-			<form action="pages/search/searchList2.jsp" name="searchList" class="search-wrapper cf">
-		        <input type="search" name="search" placeholder="Search here..." required="">
+			<form action="pages/search/searchList.jsp" name="searchList" class="search-wrapper cf">
+		        <input type="search" name="search" id="search" placeholder="Search here..." required="">
 		        <!-- <button type="submit" onclick="eventonclick()">Search</button> -->
-		        <button type="submit" >Search</button>
+		        <button type="submit" id="bt_search">Search</button>
 		    </form>   
 			<ul class="menu" >
 			<li><a href="#">간편 메뉴</a>
