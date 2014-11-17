@@ -97,12 +97,20 @@ cvo = mir.getSearchResultByID(id);
 			</div>
 		</form>
 	</section>
-	<br>
 	
-	<form name="searchList" class="search-wrapper cf">
-        <textarea  class="txtblock" rows="5" placeholder="Write Comment" name="comment"> </textarea>
-        <button type="submit" id='search_btn' >올리기</button>
+	
+	<section id="container">
+	<h1>댓글 :</h1>
+	<br>
+	<form name="searchList" id="comment-form">
+		<div id="wrapping" class="clearfix">
+			<section id="aligned">
+        		<textarea  class="txtblock" rows="2" cols="40" placeholder="Write Comment" name="comment"> </textarea>
+        		<button type="submit" id='search_btn' class="commentbtn">올 리 기</button>
+        	</section>
+        </div>
 	</form>  
+	</section>
 	
 </body>
 </html>
