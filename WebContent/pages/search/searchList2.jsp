@@ -92,17 +92,17 @@ System.out.println("list2 검색어 = "+search);
 		MtechInfoResult uir = new MtechInfoResult(da.getConnection());
 		civoList = uir.getSeachList(search);
 
-	int count = 1;
-	for (ContentsInfoVO cvo : civoList)
-	{
-		String title = cvo.getContents_title();
-		String body = cvo.getContents_body();
-	    System.out.println("제목 = "+title);
-	    System.out.println("본문 = "+body);
-%>
-<br>
- <a href="searchResult.jsp?title=<%=cvo.getContents_title() %>&id=<%=cvo.getContents_id() %>" target="_blank"><%=cvo.getContents_title() %></a><br>
- <%=cvo.getContents_body() %><br>
+		int count = 1;
+		for (ContentsInfoVO cvo : civoList)
+		{
+			String title = cvo.getTitle();
+			String body = cvo.getBody();
+		    System.out.println("제목 = "+title);
+		    System.out.println("본문 = "+body);
+	%>
+	<br>
+	 <a href="pages/search/searchResult.jsp?title=<%=cvo.getTitle() %>&id=<%=cvo.getId() %>" target="_blank"><%=cvo.getTitle() %></a><br>
+	 <%=cvo.getBody() %><br>
 
 <%
  	count++;

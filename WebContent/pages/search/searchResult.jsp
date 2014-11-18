@@ -87,12 +87,12 @@ cvo = mir.getSearchResultByID(id);
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
 				
-				<input type="text" name="title" id="title" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getContents_title() %>>
-				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getContents_receive_user_id() %>>
-				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getContents_regist_user_id() %>>
-				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getContents_tag() %>>
+				<input type="text" name="title" id="title" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getTitle() %>>
+				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getReceive_user_id() %>>
+				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getRegist_user_id() %>>
+				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getTag() %>>
 				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="없음">
-				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=cvo.getContents_body() %> </textarea>
+				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=cvo.getBody() %> </textarea>
 				</section>
 			</div>
 		</form>
@@ -107,6 +107,15 @@ cvo = mir.getSearchResultByID(id);
 			<section id="aligned">
         		<textarea  class="txtblock" rows="2" cols="40" placeholder="Write Comment" name="comment"> </textarea>
         		<button type="submit" id='search_btn' class="commentbtn">올 리 기</button>
+        	</section>
+        </div>
+	</form>  
+	</section>
+	
+	<form name="searchList" id="comment-form">
+		<div id="wrapping" class="clearfix">
+			<section id="aligned">
+        		
         	</section>
         </div>
 	</form>  

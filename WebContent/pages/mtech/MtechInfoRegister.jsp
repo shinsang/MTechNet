@@ -29,8 +29,8 @@
 		    UserInfoVO uivo = new UserInfoVO();
 		    uivo = uir.getUserInfoByID(USER_ID);
 
-		    USER_NAME = uivo.getUser_name();
-		    USER_PASSWORD = uivo.getUser_password();
+		    USER_NAME = uivo.getName();
+		    USER_PASSWORD = uivo.getPassword();
 			      String space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp";
 
 			  }

@@ -63,23 +63,23 @@ String search = request.getParameter("search");
   </tr>
   <%
   	String getParam = "";
-    String tdBgColor = "";
-    int count = 1;
-    for (UserInfoVO uivo : uivoList)
-    {
-        getParam = "ID=" + uivo.getUser_id();
-        System.out.println("NAME = "+uivo.getUser_name());
-        System.out.println("PHONE_NUM = "+uivo.getUser_phone_num());
+      String tdBgColor = "";
+      int count = 1;
+      for (UserInfoVO uivo : uivoList)
+      {
+          getParam = "ID=" + uivo.getId();
+          System.out.println("NAME = "+uivo.getName());
+          System.out.println("PHONE_NUM = "+uivo.getPhone_num());
   %>
   <tr>
     <td height="22" bgcolor='<%=tdBgColor%>'><%=count%></td>
-    <td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_id()%></b></td>
-  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_name()%></b></td>
-  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_password()%></b></td>
-  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_phone_num()%></b></td>
-  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_email()%></b></td>
-  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_property()%></b></td>
-  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getUser_status()%></b></td>
+    <td bgcolor='<%=tdBgColor%>'><b><%=uivo.getId()%></b></td>
+  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getName()%></b></td>
+  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getPassword()%></b></td>
+  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getPhone_num()%></b></td>
+  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getEmail()%></b></td>
+  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getProperty()%></b></td>
+  	<td bgcolor='<%=tdBgColor%>'><b><%=uivo.getStatus()%></b></td>
   	<td bgcolor='<%=tdBgColor%>'><b><a href="javascript:;" onClick="window.open('./MtechInfoRegister.jsp?<%=getParam%>','','width=420,height=580,toolbar=no,location=no,menubar=no, scrollbars=1');return false;"><font color='blue'><%="보기"%></font></a></b></td>
   </tr>
 
