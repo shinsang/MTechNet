@@ -10,115 +10,139 @@ package com.mocomsys.mtech.database;
 public class ContentsInfoVO
 {
 
-    private String contents_id;
-    private String contents_title;
-	private String contents_regist_user_id;
-    private String contents_regist_date;
-    private String contents_receive_user_id;
-    private String contents_refrence_user_id;
-    private String contents_tag;
-    private String contents_body;
-    private String contents_attach_file;
-	private String contents_status;
-    private String contents_click_counts;
-    private String contents_recommend_counts;
+    private String id;
+    private String title;
+	private String regist_user_id;
+    private String regist_date;
+    private String receive_user_id;
+    private String refrence_user_id;
+    private String tag;
+    private String body;
+    private String attach_file;
+	private String status;
+    private String click_counts;
+    private String recommend_counts;
 
 
-    public String getContents_id() {
-    	return contents_id;
-    }
+	public String getId() {
+		return id;
+	}
 
-	public void setContents_id(String contents_id) {
-    	this.contents_id = contents_id;
-    }
 
-	public String getContents_title() {
-    	return contents_title;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-	public void setContents_title(String contents_title) {
-    	this.contents_title = contents_title;
-    }
 
-	public String getContents_regist_user_id() {
-    	return contents_regist_user_id;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-	public void setContents_regist_user_id(String contents_regist_user_id) {
-    	this.contents_regist_user_id = contents_regist_user_id;
-    }
 
-	public String getContents_regist_date() {
-    	return contents_regist_date;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-	public void setContents_regist_date(String contents_regist_date) {
-    	this.contents_regist_date = contents_regist_date;
-    }
 
-	public String getContents_receive_user_id() {
-    	return contents_receive_user_id;
-    }
+	public String getRegist_user_id() {
+		return regist_user_id;
+	}
 
-	public void setContents_receive_user_id(String contents_receive_user_id) {
-    	this.contents_receive_user_id = contents_receive_user_id;
-    }
 
-	public String getContents_refrence_user_id() {
-    	return contents_refrence_user_id;
-    }
+	public void setRegist_user_id(String regist_user_id) {
+		this.regist_user_id = regist_user_id;
+	}
 
-	public void setContents_refrence_user_id(String contents_refrence_user_id) {
-    	this.contents_refrence_user_id = contents_refrence_user_id;
-    }
 
-	public String getContents_tag() {
-    	return contents_tag;
-    }
+	public String getRegist_date() {
+		return regist_date;
+	}
 
-	public void setContents_tag(String contents_tag) {
-    	this.contents_tag = contents_tag;
-    }
 
-	public String getContents_body() {
-    	return contents_body;
-    }
+	public void setRegist_date(String regist_date) {
+		this.regist_date = regist_date;
+	}
 
-	public void setContents_body(String contents_body) {
-    	this.contents_body = contents_body;
-    }
 
-	public String getContents_attach_file() {
-    	return contents_attach_file;
-    }
+	public String getReceive_user_id() {
+		return receive_user_id;
+	}
 
-	public void setContents_attach_file(String contents_attach_file) {
-    	this.contents_attach_file = contents_attach_file;
-    }
 
-	public String getContents_status() {
-    	return contents_status;
-    }
+	public void setReceive_user_id(String receive_user_id) {
+		this.receive_user_id = receive_user_id;
+	}
 
-	public void setContents_status(String contents_status) {
-    	this.contents_status = contents_status;
-    }
 
-	public String getContents_click_counts() {
-    	return contents_click_counts;
-    }
+	public String getRefrence_user_id() {
+		return refrence_user_id;
+	}
 
-	public void setContents_click_counts(String contents_click_counts) {
-    	this.contents_click_counts = contents_click_counts;
-    }
 
-	public String getContents_recommend_counts() {
-    	return contents_recommend_counts;
-    }
+	public void setRefrence_user_id(String refrence_user_id) {
+		this.refrence_user_id = refrence_user_id;
+	}
 
-	public void setContents_recommend_counts(String contents_recommend_counts) {
-    	this.contents_recommend_counts = contents_recommend_counts;
-    }
+
+	public String getTag() {
+		return tag;
+	}
+
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+
+	public String getBody() {
+		return body;
+	}
+
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+
+	public String getAttach_file() {
+		return attach_file;
+	}
+
+
+	public void setAttach_file(String attach_file) {
+		this.attach_file = attach_file;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getClick_counts() {
+		return click_counts;
+	}
+
+
+	public void setClick_counts(String click_counts) {
+		this.click_counts = click_counts;
+	}
+
+
+	public String getRecommend_counts() {
+		return recommend_counts;
+	}
+
+
+	public void setRecommend_counts(String recommend_counts) {
+		this.recommend_counts = recommend_counts;
+	}
+
 
 	public String toString()
     {

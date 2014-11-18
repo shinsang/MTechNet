@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MtechServlet
+ * @author shinsang
+ *
  */
 @WebServlet("/MtechServlet")
 public class MtechServlet extends HttpServlet {

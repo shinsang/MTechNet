@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * @author sgtae
+ * @author shinsang
  *
  */
 public class MtechSearchResult
@@ -44,23 +44,23 @@ public class MtechSearchResult
 			{
 				ContentsInfoVO cvo = new ContentsInfoVO();
 				System.out.println(rs.getString("CONTENTS_ID"));
-				cvo.setContents_id(rs.getString("CONTENTS_ID"));
-				cvo.setContents_title(rs.getString("CONTENTS_TITLE"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
-				cvo.setContents_regist_date(rs.getString("CONTENTS_REGIST_DATE"));
-				cvo.setContents_receive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
-				cvo.setContents_tag(rs.getString("CONTENTS_TAG"));
-				cvo.setContents_body(rs.getString("CONTENTS_BODY"));
-				cvo.setContents_attach_file(rs.getString("CONTENTS_ATTACH_FILE"));
-				cvo.setContents_status(rs.getString("CONTENTS_STATUS"));
-				cvo.setContents_click_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
-				cvo.setContents_recommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
+				cvo.setId(rs.getString("CONTENTS_ID"));
+				cvo.setTitle(rs.getString("CONTENTS_TITLE"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
+				cvo.setRegist_date(rs.getString("CONTENTS_REGIST_DATE"));
+				cvo.setReceive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
+				cvo.setTag(rs.getString("CONTENTS_TAG"));
+				cvo.setBody(rs.getString("CONTENTS_BODY"));
+				cvo.setAttach_file(rs.getString("CONTENTS_ATTACH_FILE"));
+				cvo.setStatus(rs.getString("CONTENTS_STATUS"));
+				cvo.setClick_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
+				cvo.setRecommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
 
 				arrList.add(cvo);
 			}
 			for(int i = 0; i < arrList.size() ; i++){
-				System.out.println("List["+i+"]"+arrList.get(i).getContents_title());;
+				System.out.println("List["+i+"]"+arrList.get(i).getTitle());;
 			}
 		} catch (SQLException e) {
 			StackTraceElement[] ste = e.getStackTrace();
@@ -88,7 +88,7 @@ public class MtechSearchResult
     }
 
     /**
-     * ?•´?‹¹ ID?— ?žˆ?Š” ?°?´?„°ë¥? ê°?ì§?ê³? ?˜¨?‹¤.
+     * ?ï¿½ï¿½?ï¿½ï¿½ ID?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ï¿½?ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
      * @param id
      * @return
      */
@@ -110,18 +110,18 @@ public class MtechSearchResult
 			rs = pstmt.executeQuery();
 			if (rs.next())
 			{
-				cvo.setContents_id(rs.getString("CONTENTS_ID"));
-				cvo.setContents_title(rs.getString("CONTENTS_TITLE"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
-				cvo.setContents_regist_date(rs.getString("CONTENTS_REGIST_DATE"));
-				cvo.setContents_receive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
-				cvo.setContents_tag(rs.getString("CONTENTS_TAG"));
-				cvo.setContents_body(rs.getString("CONTENTS_BODY"));
-				cvo.setContents_attach_file(rs.getString("CONTENTS_ATTACH_FILE"));
-				cvo.setContents_status(rs.getString("CONTENTS_STATUS"));
-				cvo.setContents_click_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
-				cvo.setContents_recommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
+				cvo.setId(rs.getString("CONTENTS_ID"));
+				cvo.setTitle(rs.getString("CONTENTS_TITLE"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
+				cvo.setRegist_date(rs.getString("CONTENTS_REGIST_DATE"));
+				cvo.setReceive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
+				cvo.setTag(rs.getString("CONTENTS_TAG"));
+				cvo.setBody(rs.getString("CONTENTS_BODY"));
+				cvo.setAttach_file(rs.getString("CONTENTS_ATTACH_FILE"));
+				cvo.setStatus(rs.getString("CONTENTS_STATUS"));
+				cvo.setClick_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
+				cvo.setRecommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
 
 			}
 		} catch (SQLException e) {
@@ -149,7 +149,7 @@ public class MtechSearchResult
     }
 
 	/**
-	 * ?˜„?ž¬?‹œê°„ì— ?•´?‹¹?˜?Š” timestamp ?‹œê°„ì„ ê°?ì§?ê³? ?˜¨?‹¤.
+	 * ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ê°„ì— ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ timestamp ?ï¿½ï¿½ê°„ì„ ï¿½?ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
 	 * @return
 	 */
 	private long getTime() {

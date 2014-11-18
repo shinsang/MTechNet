@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * @author sgtae
+ * @author shinsang
  *
  */
 public class MtechInfoResult
@@ -44,23 +44,23 @@ public class MtechInfoResult
 			{
 				ContentsInfoVO cvo = new ContentsInfoVO();
 				System.out.println(rs.getString("CONTENTS_ID"));
-				cvo.setContents_id(rs.getString("CONTENTS_ID"));
-				cvo.setContents_title(rs.getString("CONTENTS_TITLE"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
-				cvo.setContents_regist_date(rs.getString("CONTENTS_REGIST_DATE"));
-				cvo.setContents_receive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
-				cvo.setContents_tag(rs.getString("CONTENTS_TAG"));
-				cvo.setContents_body(rs.getString("CONTENTS_BODY"));
-				cvo.setContents_attach_file(rs.getString("CONTENTS_ATTACH_FILE"));
-				cvo.setContents_status(rs.getString("CONTENTS_STATUS"));
-				cvo.setContents_click_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
-				cvo.setContents_recommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
+				cvo.setId(rs.getString("CONTENTS_ID"));
+				cvo.setTitle(rs.getString("CONTENTS_TITLE"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
+				cvo.setRegist_date(rs.getString("CONTENTS_REGIST_DATE"));
+				cvo.setReceive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
+				cvo.setTag(rs.getString("CONTENTS_TAG"));
+				cvo.setBody(rs.getString("CONTENTS_BODY"));
+				cvo.setAttach_file(rs.getString("CONTENTS_ATTACH_FILE"));
+				cvo.setStatus(rs.getString("CONTENTS_STATUS"));
+				cvo.setClick_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
+				cvo.setRecommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
 
 				arrList.add(cvo);
 			}
 			for(int i = 0; i < arrList.size() ; i++){
-				System.out.println("List["+i+"]"+arrList.get(i).getContents_title());;
+				System.out.println("List["+i+"]"+arrList.get(i).getTitle());;
 			}
 		} catch (SQLException e) {
 			StackTraceElement[] ste = e.getStackTrace();
@@ -105,18 +105,18 @@ public class MtechInfoResult
 			rs = pstmt.executeQuery();
 			if (rs.next())
 			{
-				cvo.setContents_id(rs.getString("CONTENTS_ID"));
-				cvo.setContents_title(rs.getString("CONTENTS_TITLE"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
-				cvo.setContents_regist_date(rs.getString("CONTENTS_REGIST_DATE"));
-				cvo.setContents_receive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
-				cvo.setContents_refrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
-				cvo.setContents_tag(rs.getString("CONTENTS_TAG"));
-				cvo.setContents_body(rs.getString("CONTENTS_BODY"));
-				cvo.setContents_attach_file(rs.getString("CONTENTS_ATTACH_FILE"));
-				cvo.setContents_status(rs.getString("CONTENTS_STATUS"));
-				cvo.setContents_click_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
-				cvo.setContents_recommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
+				cvo.setId(rs.getString("CONTENTS_ID"));
+				cvo.setTitle(rs.getString("CONTENTS_TITLE"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
+				cvo.setRegist_date(rs.getString("CONTENTS_REGIST_DATE"));
+				cvo.setReceive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
+				cvo.setRefrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
+				cvo.setTag(rs.getString("CONTENTS_TAG"));
+				cvo.setBody(rs.getString("CONTENTS_BODY"));
+				cvo.setAttach_file(rs.getString("CONTENTS_ATTACH_FILE"));
+				cvo.setStatus(rs.getString("CONTENTS_STATUS"));
+				cvo.setClick_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
+				cvo.setRecommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
 			}
 		} catch (SQLException e) {
 			StackTraceElement[] ste = e.getStackTrace();
@@ -143,7 +143,7 @@ public class MtechInfoResult
     }
     
     /**
-     * UserInfo?˜ ? „ì²? Dataë¥? ê°?ì§?ê³? ?˜¨?‹¤.
+     * UserInfo?ï¿½ï¿½ ?ï¿½ï¿½ï¿½? Dataï¿½? ï¿½?ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
      * @return
      */
     public ArrayList<UserInfoVO> getAllUserInfoList()
@@ -167,19 +167,19 @@ public class MtechInfoResult
 				UserInfoVO brvo = new UserInfoVO();
 				System.out.println("-------------------");
 				System.out.println(rs.getString("USER_ID"));
-				brvo.setUser_id(rs.getString("USER_ID"));
-				brvo.setUser_name(rs.getString("USER_NAME"));
-				brvo.setUser_password(rs.getString("USER_PASSWORD"));
-				brvo.setUser_phone_num(rs.getString("USER_PHONE_NUM"));
-				brvo.setUser_email(rs.getString("USER_EMAIL"));
-				brvo.setUser_property(rs.getString("USER_PROPERTY"));
-				brvo.setUser_status(rs.getString("USER_STATUS"));
+				brvo.setId(rs.getString("USER_ID"));
+				brvo.setName(rs.getString("USER_NAME"));
+				brvo.setPassword(rs.getString("USER_PASSWORD"));
+				brvo.setPhone_num(rs.getString("USER_PHONE_NUM"));
+				brvo.setEmail(rs.getString("USER_EMAIL"));
+				brvo.setProperty(rs.getString("USER_PROPERTY"));
+				brvo.setStatus(rs.getString("USER_STATUS"));
 
 //				brvo.setCellPhone(rs.getString("CELLPHONE"));
 				arrList.add(brvo);
 			}
 			for(int i = 0; i < arrList.size() ; i++){
-				System.out.println("List["+i+"]"+arrList.get(i).getUser_id());;
+				System.out.println("List["+i+"]"+arrList.get(i).getId());;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -197,7 +197,7 @@ public class MtechInfoResult
     }
 
     /**
-     * ?•´?‹¹ ID?— ?žˆ?Š” ?°?´?„°ë¥? ê°?ì§?ê³? ?˜¨?‹¤.
+     * ?ï¿½ï¿½?ï¿½ï¿½ ID?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ï¿½?ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
      * @param id
      * @return
      */
@@ -219,14 +219,13 @@ public class MtechInfoResult
 			rs = pstmt.executeQuery();
 			if (rs.next())
 			{
-				brvo.setUser_id(rs.getString("USER_ID"));
-				brvo.setUser_name(rs.getString("USER_NAME"));
-				brvo.setUser_password(rs.getString("USER_PASSWORD"));
-				brvo.setUser_phone_num(rs.getString("USER_PHONE_NUM"));
-				brvo.setUser_email(rs.getString("USER_EMAIL"));
-				brvo.setUser_property(rs.getString("USER_PROPERTY"));
-				brvo.setUser_status(rs.getString("USER_STATUS"));
-
+				brvo.setId(rs.getString("USER_ID"));
+				brvo.setName(rs.getString("USER_NAME"));
+				brvo.setPassword(rs.getString("USER_PASSWORD"));
+				brvo.setPhone_num(rs.getString("USER_PHONE_NUM"));
+				brvo.setEmail(rs.getString("USER_EMAIL"));
+				brvo.setProperty(rs.getString("USER_PROPERTY"));
+				brvo.setStatus(rs.getString("USER_STATUS"));
 
 //				String sql2 = "SELECT MSG_CD, MSG_TXT FROM MSG_INFO WHERE MSG_CD = ?";
 //				pstmt2 = _conn.prepareStatement(sql2);
@@ -267,7 +266,7 @@ public class MtechInfoResult
     }
 
 	/**
-	 * ?˜„?ž¬?‹œê°„ì— ?•´?‹¹?˜?Š” timestamp ?‹œê°„ì„ ê°?ì§?ê³? ?˜¨?‹¤.
+	 * ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ê°„ì— ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ timestamp ?ï¿½ï¿½ê°„ì„ ï¿½?ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
 	 * @return
 	 */
 	private long getTime() {
