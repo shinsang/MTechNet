@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.MtechInfoResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.UserResult"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,17 +89,17 @@ System.out.println("list2 검색어 = "+search);
 		da.connectionJDBC();
 
 		ArrayList<ContentsInfoVO> civoList = new ArrayList<ContentsInfoVO>();
-		MtechInfoResult uir = new MtechInfoResult(da.getConnection());
+		UserResult uir = new UserResult(da.getConnection());
 		civoList = uir.getSeachList(search);
 
 		int count = 1;
 		for (ContentsInfoVO cvo : civoList)
 		{
-			String title = cvo.getTitle();
-			String body = cvo.getBody();
+	String title = cvo.getTitle();
+	String body = cvo.getBody();
 		    System.out.println("제목 = "+title);
 		    System.out.println("본문 = "+body);
-	%>
+%>
 	<br>
 	 <a href="pages/search/searchResult.jsp?title=<%=cvo.getTitle() %>&id=<%=cvo.getId() %>" target="_blank"><%=cvo.getTitle() %></a><br>
 	 <%=cvo.getBody() %><br>

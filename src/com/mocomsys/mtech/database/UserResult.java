@@ -15,11 +15,11 @@ import java.util.Calendar;
  * @author shinsang
  *
  */
-public class MtechInfoResult
+public class UserResult
 {
 	Connection _conn = null;
 
-    public MtechInfoResult(Connection conn)
+    public UserResult(Connection conn)
     {
     	this._conn = conn;
     }

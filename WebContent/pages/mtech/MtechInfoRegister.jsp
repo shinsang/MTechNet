@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=euc-kr"%>
 <%@ page
-	import="com.mocomsys.mtech.database.DataAccess, com.mocomsys.mtech.database.MtechInfoResult, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.UserInfoVO"%>
+	import="com.mocomsys.mtech.database.DataAccess,com.mocomsys.mtech.database.UserResult,java.sql.Connection,java.util.ArrayList,com.mocomsys.mtech.database.UserInfoVO"%>
 <html>
 <head>
 <title>Business Register</title>
@@ -14,26 +14,26 @@
 <body>
 	<%
 		String USER_ID = "";
-			  String USER_NAME = "";
-			  String USER_PASSWORD = "";
+		  String USER_NAME = "";
+		  String USER_PASSWORD = "";
 
-			  DataAccess da = new DataAccess();
-		da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
-		da.connectionJDBC();
+		  DataAccess da = new DataAccess();
+			da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+			da.connectionJDBC();
 
-			  if((String)request.getParameter("ID") != null)
-			  {
-			      USER_ID = (String)request.getParameter("ID");
+		  if((String)request.getParameter("ID") != null)
+		  {
+		      USER_ID = (String)request.getParameter("ID");
 
-		    MtechInfoResult uir = new MtechInfoResult(da.getConnection());
-		    UserInfoVO uivo = new UserInfoVO();
-		    uivo = uir.getUserInfoByID(USER_ID);
+			    UserResult uir = new UserResult(da.getConnection());
+			    UserInfoVO uivo = new UserInfoVO();
+			    uivo = uir.getUserInfoByID(USER_ID);
 
-		    USER_NAME = uivo.getName();
-		    USER_PASSWORD = uivo.getPassword();
-			      String space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp";
+			    USER_NAME = uivo.getName();
+			    USER_PASSWORD = uivo.getPassword();
+		      String space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp";
 
-			  }
+		  }
 	%>
 <!-- 	<center> -->
 		<font size='4' color='blue'></font>

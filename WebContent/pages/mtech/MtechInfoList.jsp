@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.UserInfoVO,com.mocomsys.mtech.database.MtechInfoResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.UserInfoVO,com.mocomsys.mtech.database.UserResult"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -39,12 +39,12 @@ String search = request.getParameter("search");
 결과 :<%=search%>
 	<%
 		DataAccess da = new DataAccess();
-			da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
-			da.connectionJDBC();
+		da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+		da.connectionJDBC();
 
-			ArrayList<UserInfoVO> uivoList = new ArrayList<UserInfoVO>();
-			MtechInfoResult uir = new MtechInfoResult(da.getConnection());
-			uivoList = uir.getAllUserInfoList();
+		ArrayList<UserInfoVO> uivoList = new ArrayList<UserInfoVO>();
+		UserResult uir = new UserResult(da.getConnection());
+		uivoList = uir.getAllUserInfoList();
 	%>
 <center>
 	<center><b><font size='4' color='blue'>조치 리스트</font></b></center>
