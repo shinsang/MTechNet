@@ -1,9 +1,11 @@
 eclipse.preferences.version=1
 encoding//WebContent/pages/search/searchResult.jsp=UTF-8
+encoding//WebContent/stylesheets/board/board_styleSheet.css=UTF-8
+encoding//src/com/mocomsys/mtech/database/CommentInfoVO.java=UTF-8
 encoding//src/com/mocomsys/mtech/database/ContentsInfoVO.java=UTF-8
+encoding//src/com/mocomsys/mtech/database/ContentsResult.java=UTF-8
 encoding//src/com/mocomsys/mtech/database/DataAccess.java=UTF-8
-encoding//src/com/mocomsys/mtech/database/MtechInfoResult.java=UTF-8
-encoding//src/com/mocomsys/mtech/database/MtechSearchResult.java=UTF-8
 encoding//src/com/mocomsys/mtech/database/MtechServlet.java=UTF-8
 encoding//src/com/mocomsys/mtech/database/UserInfoVO.java=UTF-8
+encoding//src/com/mocomsys/mtech/database/UserResult.java=UTF-8
 encoding/<project>=UTF-8

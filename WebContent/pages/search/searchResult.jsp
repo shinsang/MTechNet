@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.MtechInfoResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.UserResult"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <%
-    request.setCharacterEncoding("utf-8");
-	String id = request.getParameter("id");
-	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
-	System.out.println("ID = "+id);
-	System.out.println("제목 = "+title);
+    	request.setCharacterEncoding("utf-8");
+    	String id = request.getParameter("id");
+    	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
+    	System.out.println("ID = "+id);
+    	System.out.println("제목 = "+title);
     %>
-    <title><%=title %> - MTechNet 검색</title>
+    <title><%=title%> - MTechNet 검색</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="../../img/logo/mLogo.png" />
 	
@@ -73,12 +73,12 @@
 <br>
 <br>
 <%
-DataAccess da = new DataAccess();
+	DataAccess da = new DataAccess();
 da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
 da.connectionJDBC();
 
 ContentsInfoVO cvo = new ContentsInfoVO();
-MtechInfoResult mir = new MtechInfoResult(da.getConnection());
+UserResult mir = new UserResult(da.getConnection());
 cvo = mir.getSearchResultByID(id);
 %>
 

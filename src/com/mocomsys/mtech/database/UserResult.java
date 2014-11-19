@@ -4,6 +4,7 @@
 package com.mocomsys.mtech.database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,11 +16,11 @@ import java.util.Calendar;
  * @author shinsang
  *
  */
-public class MtechInfoResult
+public class UserResult
 {
 	Connection _conn = null;
 
-    public MtechInfoResult(Connection conn)
+    public UserResult(Connection conn)
     {
     	this._conn = conn;
     }
@@ -264,7 +265,73 @@ public class MtechInfoResult
 		}
 		return brvo;
     }
+public void userInsert(UserInfoVO user){
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		int count = 0;
+		String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
+		
+		try{
+			
+			conn = DriverManager.getConnection(url,"mocomsys","mocomsys");
+			sql = "insert into USER_INFO_TABLE values(?,?,?,?,?,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(++count, ((UserInfoVO) user).getId());
+			pstmt.setString(++count, ((UserInfoVO) user).getName());
+			pstmt.setString(++count, ((UserInfoVO) user).getPassword());
+			pstmt.setString(++count, ((UserInfoVO) user).getPhone_num());
+			pstmt.setString(++count, ((UserInfoVO) user).getEmail());
+			pstmt.setString(++count, ((UserInfoVO) user).getProperty());
+			pstmt.setString(++count, ((UserInfoVO) user).getStatus());
+			pstmt.executeUpdate();
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
+	public int userCheck(String id, String passwd){
+
+		  Connection conn= null;
+		  PreparedStatement pstmt = null;
+		  ResultSet rs =null;
+		  String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
+		  String sql="";
+		  String dbpasswd="";
+		  int x = -1;
+		 
+		 try{
+		  conn = DriverManager.getConnection(url,"mocomsys","mocomsys");
+		  sql = "select passwd from MEMBER where id = ?";
+		  pstmt = conn.prepareStatement(sql);
+		  pstmt.setString(1, id);
+		  rs = pstmt.executeQuery();
+		 
+		    if(rs.next()){
+		      dbpasswd =rs.getString("passwd");
+		      
+		      if(dbpasswd.equals(passwd))
+		        x=1; //인증성공
+		      else
+		        x=0; //비밀번호 틀림
+		      }else
+		        
+		      x=-1; //해당 아이디 없음
+
+		 }catch(Exception e){
+		 
+		  e.printStackTrace();
+
+		 }finally{
+		  
+		 }
+		 
+		 return x;
+		 
+		}
 	/**
 	 * ?��?��?��간에 ?��?��?��?�� timestamp ?��간을 �?�?�? ?��?��.
 	 * @return
