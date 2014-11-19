@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.MtechInfoResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.UserResult"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +85,7 @@ String search = request.getParameter("search");
 		da.connectionJDBC();
 
 		ArrayList<ContentsInfoVO> civoList = new ArrayList<ContentsInfoVO>();
-		MtechInfoResult uir = new MtechInfoResult(da.getConnection());
+		UserResult uir = new UserResult(da.getConnection());
 		civoList = uir.getSeachList(search);
 
 	int count = 1;
