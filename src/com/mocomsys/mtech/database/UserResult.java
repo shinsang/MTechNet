@@ -108,7 +108,7 @@ public class UserResult
 			{
 				cvo.setId(rs.getString("CONTENTS_ID"));
 				cvo.setTitle(rs.getString("CONTENTS_TITLE"));
-				cvo.setRefrence_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
+				cvo.setRegist_user_id(rs.getString("CONTENTS_REGIST_USER_ID"));
 				cvo.setRegist_date(rs.getString("CONTENTS_REGIST_DATE"));
 				cvo.setReceive_user_id(rs.getString("CONTENTS_RECEIVE_USER_ID"));
 				cvo.setRefrence_user_id(rs.getString("CONTENTS_REFRENCE_USER_ID"));
@@ -119,6 +119,9 @@ public class UserResult
 				cvo.setClick_counts(rs.getString("CONTENTS_CLICK_COUNTS"));
 				cvo.setRecommend_counts(rs.getString("CONTENTS_RECOMMEND_COUNTS"));
 			}
+			
+			System.out.println("ID["+cvo.getId()+"] Title["+cvo.getTitle()+"] receive user id["+cvo.getReceive_user_id()+"] regist user id["+cvo.getRegist_user_id()+"]");
+			
 		} catch (SQLException e) {
 			StackTraceElement[] ste = e.getStackTrace();
 			for (int i=0;i < ste.length; i++) {
