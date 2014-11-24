@@ -91,7 +91,7 @@ cvo = mir.getSearchResultByID(id);
 				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getReceive_user_id() %>>
 				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getRegist_user_id() %>>
 				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getTag() %>>
-				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="없음">
+				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="파일 없음">
 				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=cvo.getBody() %> </textarea>
 				</section>
 			</div>
