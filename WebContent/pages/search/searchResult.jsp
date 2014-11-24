@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.vo.ContentsVO,com.mocomsys.mtech.dao.UserDAO"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.vo.ContentsVO,com.mocomsys.mtech.dao.ContentsDAO, com.mocomsys.mtech.vo.CommentVO,com.mocomsys.mtech.dao.CommentDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,9 +77,9 @@
 da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
 da.connectionJDBC();
 
-ContentsVO cvo = new ContentsVO();
-UserDAO mir = new UserDAO(da.getConnection());
-cvo = mir.getSearchResultByID(id);
+ContentsVO ctvo = new ContentsVO();
+ContentsDAO ctdao = new ContentsDAO(da.getConnection());
+ctvo = ctdao.getSearchResultByID(id);
 %>
 
 	<section id="container">
@@ -87,12 +87,12 @@ cvo = mir.getSearchResultByID(id);
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
 				
-				<input type="text" name="title" id="title" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getTitle() %>>
-				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getReceive_user_id() %>>
-				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getRegist_user_id() %>>
-				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value=<%=cvo.getTag() %>>
+				<input type="text" name="title" id="title" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getTitle() %>>
+				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getReceive_user_id() %>>
+				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getRegist_user_id() %>>
+				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getTag() %>>
 				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="파일 없음">
-				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=cvo.getBody() %> </textarea>
+				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=ctvo.getBody() %> </textarea>
 				</section>
 			</div>
 		</form>
@@ -105,21 +105,49 @@ cvo = mir.getSearchResultByID(id);
 	<form name="searchList" id="comment-form">
 		<div id="wrapping" class="clearfix">
 			<section id="aligned">
-        		<textarea  class="txtblock" rows="2" cols="40" placeholder="Write Comment" name="comment"> </textarea>
+        		<textarea  class="txtblock" rows="2" cols="40" placeholder="댓글 작성" name="comment"> </textarea>
         		<button type="submit" id='search_btn' class="commentbtn">올 리 기</button>
         	</section>
         </div>
 	</form>  
 	</section>
+
+<%
+
+CommentDAO cmdao = new CommentDAO(da.getConnection());
+ArrayList<CommentVO> cmvoList = new ArrayList<CommentVO>();
+cmvoList = cmdao.getCommentList(id);
+
+for(CommentVO cmvo : cmvoList)
+{
+	String cmId = cmvo.getId();
+	String cmTitle = cmvo.getTitle();
+	String cmregistID = cmvo.getRegist_user_id();
+	String cmBody = cmvo.getBody();
+	System.out.println("코멘트 ID = "+cmId);
+	System.out.println("코멘트 작성자 ID = "+cmregistID);
+    System.out.println("코멘트 제목 = "+cmTitle);
+    System.out.println("코멘트 본문 = "+cmBody);
+
+%>
+
 	
+	<section id="container">
+	<h1><%=cmvo.getRegist_user_id()%></h1>                       <%=cmvo.getRegist_date() %>
+	<br>
 	<form name="searchList" id="comment-form">
 		<div id="wrapping" class="clearfix">
 			<section id="aligned">
-        		
+        		<textarea  class="txtblock" rows="2" cols="40" placeholder="" name="comment"><%=cmvo.getBody() %></textarea>
         	</section>
         </div>
 	</form>  
 	</section>
+
+<%
+}
+%>
+	
 	
 </body>
 </html>

@@ -86,7 +86,7 @@ String search = request.getParameter("search");
 
 		ArrayList<ContentsVO> civoList = new ArrayList<ContentsVO>();
 		UserDAO uir = new UserDAO(da.getConnection());
-		civoList = uir.getSeachList(search);
+		civoList = uir.getContentsList(search);
 
 	int count = 1;
 	for (ContentsVO civo : civoList)
