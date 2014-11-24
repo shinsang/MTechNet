@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.mocomsys.mtech.database;
+package com.mocomsys.mtech.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,25 +11,27 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.mocomsys.mtech.vo.ContentsVO;
+
 /**
  * @author shinsang
  *
  */
-public class ContentsResult
+public class ContentsDAO
 {
 	Connection _conn = null;
 
-    public ContentsResult(Connection conn)
+    public ContentsDAO(Connection conn)
     {
     	this._conn = conn;
     }
 
-    public ArrayList<ContentsInfoVO> getSeachList(String seaches){
+    public ArrayList<ContentsVO> getSeachList(String seaches){
     	System.out.println("-----getSeachList ["+seaches+"]");
     	PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		ArrayList<ContentsInfoVO> arrList = new ArrayList<ContentsInfoVO>();
+		ArrayList<ContentsVO> arrList = new ArrayList<ContentsVO>();
     	String sql = "SELECT * FROM CONTENTS_INFO WHERE LOWER(CONTENTS_BODY) LIKE '%'||LOWER(?)||'%'";
 
     	try {
@@ -42,7 +44,7 @@ public class ContentsResult
 			rs = pstmt.executeQuery();
 			while (rs.next())
 			{
-				ContentsInfoVO cvo = new ContentsInfoVO();
+				ContentsVO cvo = new ContentsVO();
 				System.out.println(rs.getString("CONTENTS_ID"));
 				cvo.setId(rs.getString("CONTENTS_ID"));
 				cvo.setTitle(rs.getString("CONTENTS_TITLE"));
@@ -92,13 +94,13 @@ public class ContentsResult
      * @param id
      * @return
      */
-    public ContentsInfoVO getSearchInfoByID(String id)
+    public ContentsVO getSearchInfoByID(String id)
     {
     	PreparedStatement pstmt = null;
     	
 		ResultSet rs = null;
 		
-		ContentsInfoVO cvo = new ContentsInfoVO();
+		ContentsVO cvo = new ContentsVO();
 //		String sql = "SELECT A.CLNT_NO, B.CLNT_NM, A.LIM_A, A.APRV_DT, A.MSG_CD, B.CELLPHONE, B.EMAIL FROM ACTIONS A, CLNT_INFO B WHERE A.CLNT_NO = B.CLNT_NO and B.CLNT_NO = ?";
 		String sql = "SELECT * FROM CONTENTS_INFO WHERE CONTENTS_ID = ?";
 

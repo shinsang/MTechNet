@@ -1,13 +1,13 @@
 /**
  *
  */
-package com.mocomsys.mtech.database;
+package com.mocomsys.mtech.vo;
 
 /**
  * @author shinsang
  *
  */
-public class UserInfoVO
+public class UserVO
 {
 
     private String id;
