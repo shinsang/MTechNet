@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.UserInfoVO,com.mocomsys.mtech.database.UserResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.vo.UserVO,com.mocomsys.mtech.dao.UserDAO"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -42,8 +42,8 @@ String search = request.getParameter("search");
 		da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
 		da.connectionJDBC();
 
-		ArrayList<UserInfoVO> uivoList = new ArrayList<UserInfoVO>();
-		UserResult uir = new UserResult(da.getConnection());
+		ArrayList<UserVO> uivoList = new ArrayList<UserVO>();
+		UserDAO uir = new UserDAO(da.getConnection());
 		uivoList = uir.getAllUserInfoList();
 	%>
 <center>
@@ -63,13 +63,13 @@ String search = request.getParameter("search");
   </tr>
   <%
   	String getParam = "";
-      String tdBgColor = "";
-      int count = 1;
-      for (UserInfoVO uivo : uivoList)
-      {
-          getParam = "ID=" + uivo.getId();
-          System.out.println("NAME = "+uivo.getName());
-          System.out.println("PHONE_NUM = "+uivo.getPhone_num());
+        String tdBgColor = "";
+        int count = 1;
+        for (UserVO uivo : uivoList)
+        {
+            getParam = "ID=" + uivo.getId();
+            System.out.println("NAME = "+uivo.getName());
+            System.out.println("PHONE_NUM = "+uivo.getPhone_num());
   %>
   <tr>
     <td height="22" bgcolor='<%=tdBgColor%>'><%=count%></td>

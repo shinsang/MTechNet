@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.UserResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.vo.ContentsVO,com.mocomsys.mtech.dao.UserDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +21,12 @@ System.out.println("list1 검색어 = "+search);
 		da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
 		da.connectionJDBC();
 
-		ArrayList<ContentsInfoVO> civoList = new ArrayList<ContentsInfoVO>();
-		UserResult uir = new UserResult(da.getConnection());
+		ArrayList<ContentsVO> civoList = new ArrayList<ContentsVO>();
+		UserDAO uir = new UserDAO(da.getConnection());
 		civoList = uir.getSeachList(search);
 
 	int count = 1;
-	for (ContentsInfoVO cvo : civoList)
+	for (ContentsVO cvo : civoList)
 	{
 		String title = cvo.getTitle();
 		String body = cvo.getBody();

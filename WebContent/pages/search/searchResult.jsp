@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.database.ContentsInfoVO,com.mocomsys.mtech.database.UserResult"%>
+<%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.vo.ContentsVO,com.mocomsys.mtech.dao.UserDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <%
     	request.setCharacterEncoding("utf-8");
-    	String id = request.getParameter("id");
-    	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
-    	System.out.println("ID = "+id);
-    	System.out.println("제목 = "+title);
+            	String id = request.getParameter("id");
+            	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
+            	System.out.println("ID = "+id);
+            	System.out.println("제목 = "+title);
     %>
     <title><%=title%> - MTechNet 검색</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,8 +77,8 @@
 da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
 da.connectionJDBC();
 
-ContentsInfoVO cvo = new ContentsInfoVO();
-UserResult mir = new UserResult(da.getConnection());
+ContentsVO cvo = new ContentsVO();
+UserDAO mir = new UserDAO(da.getConnection());
 cvo = mir.getSearchResultByID(id);
 %>
 

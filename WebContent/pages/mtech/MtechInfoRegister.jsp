@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=euc-kr"%>
 <%@ page
-	import="com.mocomsys.mtech.database.DataAccess,com.mocomsys.mtech.database.UserResult,java.sql.Connection,java.util.ArrayList,com.mocomsys.mtech.database.UserInfoVO"%>
+	import="com.mocomsys.mtech.database.DataAccess,com.mocomsys.mtech.dao.UserDAO,java.sql.Connection,java.util.ArrayList,com.mocomsys.mtech.vo.UserVO"%>
 <html>
 <head>
 <title>Business Register</title>
@@ -25,8 +25,8 @@
 		  {
 		      USER_ID = (String)request.getParameter("ID");
 
-			    UserResult uir = new UserResult(da.getConnection());
-			    UserInfoVO uivo = new UserInfoVO();
+			    UserDAO uir = new UserDAO(da.getConnection());
+			    UserVO uivo = new UserVO();
 			    uivo = uir.getUserInfoByID(USER_ID);
 
 			    USER_NAME = uivo.getName();
