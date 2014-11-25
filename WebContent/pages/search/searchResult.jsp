@@ -1,17 +1,24 @@
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLDecoder, java.net.URLEncoder"%>
 <%@ page import="com.mocomsys.mtech.database.DataAccess, java.sql.Connection, java.util.ArrayList,com.mocomsys.mtech.vo.ContentsVO,com.mocomsys.mtech.dao.ContentsDAO, com.mocomsys.mtech.vo.CommentVO,com.mocomsys.mtech.dao.CommentDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <script type="text/javascript"> 
+		document.getElementById("title").value = "<%=request.getParameter("title")%>"; 
+	</script> 
     <%
-    	request.setCharacterEncoding("utf-8");
-            	String id = request.getParameter("id");
-            	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
-            	System.out.println("ID = "+id);
-            	System.out.println("제목 = "+title);
+   				response.setContentType("text/html; charset=UTF-8");
+    			request.setCharacterEncoding("UTF-8");
+            	String id = URLDecoder.decode(request.getParameter("id"), "UTF-8");
+            	
+//             	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
+            	String title = URLDecoder.decode(request.getParameter("title"), "UTF-8");
+            	System.out.println("서치 결과 ID = "+id);
+            	System.out.println("서치 결과 제목 = "+title);
     %>
     <title><%=title%> - MTechNet 검색</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="../../img/logo/mLogo.png" />
 	
@@ -80,6 +87,9 @@ da.connectionJDBC();
 ContentsVO ctvo = new ContentsVO();
 ContentsDAO ctdao = new ContentsDAO(da.getConnection());
 ctvo = ctdao.getSearchResultByID(id);
+
+String ctTitle = ctvo.getTitle();
+System.out.println("Contents 타이틀 = "+ctTitle);
 %>
 
 	<section id="container">
@@ -87,10 +97,10 @@ ctvo = ctdao.getSearchResultByID(id);
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
 				
-				<input type="text" name="title" id="title" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getTitle() %>>
-				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getReceive_user_id() %>>
-				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getRegist_user_id() %>>
-				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value=<%=ctvo.getTag() %>>
+				<input type="text" name="title" id="title" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctTitle %>">
+				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctvo.getReceive_user_id() %>">
+				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctvo.getRegist_user_id() %>">
+				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctvo.getTag() %>">
 				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="파일 없음">
 				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=ctvo.getBody() %> </textarea>
 				</section>
