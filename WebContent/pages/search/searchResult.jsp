@@ -4,20 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript"> 
-		document.getElementById("title").value = "<%=request.getParameter("title")%>"; 
-	</script> 
     <%
-   				response.setContentType("text/html; charset=UTF-8");
-    			request.setCharacterEncoding("UTF-8");
-            	String id = URLDecoder.decode(request.getParameter("id"), "UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+    	request.setCharacterEncoding("UTF-8");
+        String id = URLDecoder.decode(request.getParameter("id"), "UTF-8");
             	
-//             	String title = new String(request.getParameter("title").getBytes("8859_1"),"KSC5601");;
-            	String title = URLDecoder.decode(request.getParameter("title"), "UTF-8");
-            	System.out.println("서치 결과 ID = "+id);
-            	System.out.println("서치 결과 제목 = "+title);
+        DataAccess da = new DataAccess();
+        da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+        da.connectionJDBC();
+
+        ContentsVO ctvo = new ContentsVO();
+        ContentsDAO ctdao = new ContentsDAO(da.getConnection());
+        ctvo = ctdao.getSearchResultByID(id);
+
+        String ctTitle = ctvo.getTitle();
     %>
-    <title><%=title%> - MTechNet 검색</title>
+    <title><%=ctTitle%> - MTechNet 검색</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="../../img/logo/mLogo.png" />
@@ -79,18 +81,6 @@
 <br>
 <br>
 <br>
-<%
-	DataAccess da = new DataAccess();
-da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
-da.connectionJDBC();
-
-ContentsVO ctvo = new ContentsVO();
-ContentsDAO ctdao = new ContentsDAO(da.getConnection());
-ctvo = ctdao.getSearchResultByID(id);
-
-String ctTitle = ctvo.getTitle();
-System.out.println("Contents 타이틀 = "+ctTitle);
-%>
 
 	<section id="container">
 		<form name="join_techNet" id="join_techNet-form" >
@@ -101,7 +91,7 @@ System.out.println("Contents 타이틀 = "+ctTitle);
 				<input type="text" name="engineer" id="engineer" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctvo.getReceive_user_id() %>">
 				<input type="text" name="cc" id="cc" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctvo.getRegist_user_id() %>">
 				<input type="text" name="tag" id="tag" autocomplete="off" tabindex="1" class="txtinput" value="<%=ctvo.getTag() %>">
-				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="파일 없음">
+				<input type="text" name="file" id="file" autocomplete="off" tabindex="1" class="txtinput" readonly="true" value="<%=ctvo.getAttach_file()%>">
 				<textarea  class="txtblock" rows="5" placeholder="Write Contents" name="contents"><%=ctvo.getBody() %> </textarea>
 				</section>
 			</div>
