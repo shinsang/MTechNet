@@ -28,20 +28,12 @@ public class UserDAO
     	this._conn = conn;
     }
 
-   
-    /**
-     * UserInfo?�� ?���? Data�? �?�?�? ?��?��.
-     * @return
-     */
     public ArrayList<UserVO> getAllUserInfoList()
     {
     	PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<UserVO> arrList = new ArrayList<UserVO>();
-//		String sql = "SELECT ACTIONS.CLNT_NO, CLNT_INFO.CLNT_NM, ACTIONS.LIM_A, ACTIONS.MSG_CD, CLNT_INFO.CELLPHONE FROM ACTIONS, CLNT_INFO WHERE ACTIONS.CLNT_NO=CLNT_INFO.CLNT_NO";
-//		String sql = "SELECT * FROM ACTIONS";
-//		String sql = "SELECT A.CLNT_NO, B.CLNT_NM, A.LIM_A, A.APRV_DT, A.MSG_CD FROM ACTIONS A, CLNT_INFO B WHERE A.CLNT_NO=B.CLNT_NO";
-//		String sql = "SELECT USER_ID, USER_NAME, USER_PASSWORD, USER_PHONE_NUM, USER_EMAIL, USER_PROPERTY, USER_STATUS FROM USER_INFO";
+
 		String sql = "SELECT * FROM USER_INFO";
 		try {
 			pstmt = _conn.prepareStatement(sql);
@@ -83,11 +75,6 @@ public class UserDAO
 		return arrList;
     }
 
-    /**
-     * ?��?�� ID?�� ?��?�� ?��?��?���? �?�?�? ?��?��.
-     * @param id
-     * @return
-     */
     public UserVO getUserInfoByID(String id)
     {
     	PreparedStatement pstmt = null;
@@ -114,15 +101,6 @@ public class UserDAO
 				brvo.setProperty(rs.getString("USER_PROPERTY"));
 				brvo.setStatus(rs.getString("USER_STATUS"));
 
-//				String sql2 = "SELECT MSG_CD, MSG_TXT FROM MSG_INFO WHERE MSG_CD = ?";
-//				pstmt2 = _conn.prepareStatement(sql2);
-//				pstmt2.setString(1, rs.getString("MSG_CD"));
-//				rs2 = pstmt2.executeQuery();
-//				rs2.next();
-//
-//				brvo.setUser_id(rs2.getString("USER_ID"));
-//				System.out.println("USER_ID = ["+rs.getString("USER_ID")+"]");
-//				System.out.println("USER_ID = ["+rs2.getString("USER_ID")+"]");
 			}
 		} catch (SQLException e) {
 			StackTraceElement[] ste = e.getStackTrace();
@@ -179,27 +157,25 @@ public void userInsert(UserVO user){
 		}
 	}
 
-	public int userCheck(String id, String passwd){
+	public int userCheck(String id, String password){
 
 		  Connection conn= null;
 		  PreparedStatement pstmt = null;
 		  ResultSet rs =null;
-		  String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
 		  String sql="";
 		  String dbpasswd="";
 		  int x = -1;
 		 
 		 try{
-		  conn = DriverManager.getConnection(url,"mocomsys","mocomsys");
-		  sql = "select passwd from MEMBER where id = ?";
-		  pstmt = conn.prepareStatement(sql);
+		  sql = "SELECT USER_PASSWORD FROM USER_INFO WHERE USER_ID = ?";
+		  pstmt = _conn.prepareStatement(sql);
 		  pstmt.setString(1, id);
 		  rs = pstmt.executeQuery();
 		 
 		    if(rs.next()){
-		      dbpasswd =rs.getString("passwd");
+		      dbpasswd =rs.getString("USER_PASSWORD");
 		      
-		      if(dbpasswd.equals(passwd))
+		      if(dbpasswd.equals(password))
 		        x=1; //인증성공
 		      else
 		        x=0; //비밀번호 틀림
@@ -218,10 +194,7 @@ public void userInsert(UserVO user){
 		 return x;
 		 
 		}
-	/**
-	 * ?��?��?��간에 ?��?��?��?�� timestamp ?��간을 �?�?�? ?��?��.
-	 * @return
-	 */
+	
 	private long getTime() {
 
 		Calendar rightNow = Calendar.getInstance();

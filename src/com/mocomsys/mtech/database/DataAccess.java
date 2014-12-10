@@ -48,6 +48,9 @@ public class DataAccess {
 		this.initDBMS(driverName, dbName, ip, port, user, password);
 		// this.initDBMS("ORACLE", "dtt", "10.10.10.4", "1521", "dtt", "dtt");
 	}
+	public void setDBProperty(){
+		this.initDBMS("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+	}
 
 	/**
 	 * parameter�뿉�꽌 諛쏆�� (driverName, dbName, IP, PORT, User, Password) 媛믪쓣 setting �븳�떎.
