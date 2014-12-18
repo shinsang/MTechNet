@@ -13,9 +13,8 @@ body {
 	position:fixed;
 	display: block;
 	background: #DD0000;
-	height: 12%;
+	height: 80px;
 	float: right;
-	
 }
 #topBar2{
 	z-index:98;

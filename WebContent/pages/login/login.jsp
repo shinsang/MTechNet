@@ -78,13 +78,13 @@
 	
 	<section id="container">
 		<span class="chyron"><em><a href="../../index.jsp">&laquo; 뒤로</a></em></span>
-		<h2>Mocomsys TechNet Login</h2>
+		<h2>Mocomsys TechNet 로그인</h2>
 		<form name="loginFrm" id="login_techNet-form" method="post">
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
 				<input type="hidden"  name="redirectURI"  value="<%="../../index.jsp"%>" >
-				<input type="text" name="id" id="id" placeholder="ID" autocomplete="off" tabindex="1" class="txtinput">
-				<input type="password" name="password" id="passWord" placeholder="암호" autocomplete="off" tabindex="1" class="txtinput">
+				<input type="text" name="id" id="id" placeholder="ID 입력" autocomplete="off" tabindex="1" class="txtinput">
+				<input type="password" name="password" id="passWord" placeholder="암호 입력" autocomplete="off" tabindex="1" class="txtinput">
 				<div id="layer_ajax"></div>
 				<input type="button" id="confirmID" class="btninput" tabindex="1" value="로그인">
 				</section>

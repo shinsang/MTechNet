@@ -95,7 +95,7 @@ outline: 0 none;
 #login_techNet-form input#id {
 background: #fff url('../../img/login/id.png') 5px 4px no-repeat;
 }
-#login_techNet-form input#passWord1 {
+#login_techNet-form input#passWord {
 background: #fff url('../../img/login/password1.png') 5px 4px no-repeat;
 }
 
@@ -139,7 +139,7 @@ margin-right: 50px;
 	box-sizing: border-box;
 }
 
-/** button 임의 추가 **/
+/** button �꾩쓽 異붽� **/
 #login_techNet-form .btninput { 
 display: block;
 font-family: "Helvetica Neue", Arial, sans-serif;
@@ -176,7 +176,7 @@ outline: 0 none;
 #login_techNet-form input#confirmID {
 background: #fff;
 }
-/** 버튼 추가 끝 **/
+/** 踰꾪듉 異붽� ��**/
 
 
 #wrapping { width: 100%; box-sizing: border-box; }

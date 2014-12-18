@@ -26,8 +26,8 @@ http://vladimirkudinov.com
 /* Menu */
 .menu {	
 	height: 40px;
-	width: 300px;
-	margin-top : 1.5%;
+	width: 330px;
+	margin-top : 2%;
 	margin-right : 5%;
 	background: #4c4e5a;
 	
@@ -86,7 +86,7 @@ http://vladimirkudinov.com
 
 .menu ul {
 	position: absolute;
-	top: 40px;
+	top: 50px;
 	left: 0;
 	
 	opacity: 0;

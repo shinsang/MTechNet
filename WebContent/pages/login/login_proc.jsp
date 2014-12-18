@@ -17,7 +17,7 @@
     	loginMsg = "비밀번호를 입력해 주세요";
     }else{
 	    DataAccess da = new DataAccess();
-		da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+		da.setDBProperty();
 		da.connectionJDBC();
 	
 		UserVO uvo = new UserVO();

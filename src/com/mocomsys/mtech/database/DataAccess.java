@@ -49,7 +49,7 @@ public class DataAccess {
 		// this.initDBMS("ORACLE", "dtt", "10.10.10.4", "1521", "dtt", "dtt");
 	}
 	public void setDBProperty(){
-		this.initDBMS("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+		this.initDBMS("ORACLE", "orcl", "127.0.0.1", "1521", "mi", "mi");
 	}
 
 	/**

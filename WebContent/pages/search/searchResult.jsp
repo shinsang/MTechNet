@@ -10,7 +10,7 @@
         String id = URLDecoder.decode(request.getParameter("id"), "UTF-8");
             	
         DataAccess da = new DataAccess();
-        da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+        da.setDBProperty();
         da.connectionJDBC();
 
         ContentsVO ctvo = new ContentsVO();

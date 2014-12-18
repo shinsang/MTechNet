@@ -13,14 +13,12 @@
 <%
 	response.setContentType("text/html; charset=UTF-8");
 	request.setCharacterEncoding("UTF-8");
-String search = URLDecoder.decode(request.getParameter("search"), "UTF-8");
+	String search = URLDecoder.decode(request.getParameter("search"), "UTF-8");
 
-System.out.println("list1 검색어 = "+search);
-%>
+	System.out.println("list1 검색어 = "+search);
 
-<%
 	DataAccess da = new DataAccess();
-		da.setDBProperty("ORACLE", "orcl", "10.10.11.139", "1521", "mocomsys", "mocomsys");
+		da.setDBProperty();
 		da.connectionJDBC();
 
 		ArrayList<ContentsVO> civoList = new ArrayList<ContentsVO>();
@@ -37,9 +35,9 @@ System.out.println("list1 검색어 = "+search);
 	    System.out.println("본문 = "+body);
 %>
 <br>
- <a href="pages/search/searchResult.jsp?title=<%=title %>&id=<%=id %>" target="_blank"><%=cvo.getTitle() %></a><br>
+ <a href="pages/search/searchResult.jsp?title=<%=title %>&id=<%=id %>" target="_blank"><h3><%=cvo.getTitle() %></h3></a><br>
  <%=cvo.getBody() %><br>
-
+-------------------------------------------------------------------------------------------------------
 <%
  	count++;
 	}
