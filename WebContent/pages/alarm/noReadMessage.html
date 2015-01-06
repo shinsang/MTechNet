@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+		<script src="js/ajax.js" type="text/javascript"></script>
+		<script src="js/jquery-1.11.1.js"></script>
+		<script>
+		function refreshCount(){
+			var id = document.getElementById('id_hiddenbar').value;
+			$('#test').load('pages/alarm/selectNoRead.jsp?id='+id);
+			
+		}
+		
+		window.onload=refreshCount() 
+		</script>
+</head>
+<body >
+
+<br><br><br><br>
+    <div class="box-radius" id="alarmCount" ><a href="#" style=" display:block;text-decoration:none;text-align:center;vertical-align:middle; font-size:3em;"><span id="test">0</span></a></div> 
+</body>
+</html>

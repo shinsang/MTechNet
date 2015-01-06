@@ -10,6 +10,14 @@
   <link rel="icon" href="img/join/mLogo.png">
   <link rel="stylesheet" type="text/css" media="all" href="stylesheets/board/board_styleSheet.css">
   <link rel="stylesheet" type="text/css" media="all" href="stylesheets/board/board_responsive.css">
+  
+	<script>
+		function Completeclick() {
+			var x = document.getElementById("submitbtn");
+			
+  		}
+    </script>
+    
 </head>
 
 <body>
@@ -20,7 +28,7 @@
 		<div id="wrapping" class="clearfix">
 			<section id="aligned">
 			
-			<input type="text" name="title" id="title" placeholder="제목" autocomplete="off" tabindex="1" class="txtinput">
+			<input type="text" name="title" id="title" placeholder="제목(테스트)" autocomplete="off" tabindex="1" class="txtinput">
 			<input type="text" name="engineer" id="engineer" placeholder="받을 사람" autocomplete="off" tabindex="1" class="txtinput">
 			<input type="text" name="cc" id="cc" placeholder="참조" autocomplete="off" tabindex="1" class="txtinput">
 			<input type="text" name="tag" id="tag" placeholder="카테고리(Tag)" autocomplete="off" tabindex="1" class="txtinput">
@@ -30,7 +38,7 @@
 		</div>
 		<section id="buttons">
 			<input type="reset" name="reset" id="resetbtn" class="resetbtn" value="다시 작성">
-			<input type="submit" name="submit" id="submitbtn" class="submitbtn" tabindex="7" value="신규 등록">
+			<input type="submit" type="button" name="submit" id="submitbtn" class="submitbtn" tabindex="7" value="신규 등록" onclick="Completeclick();">
 			<br style="clear:both;">
 		</section>
 		</form>

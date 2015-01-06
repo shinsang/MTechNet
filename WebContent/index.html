@@ -4,9 +4,14 @@
         <!--js here for optimal page loading--> 
 
 		<script src="js/dropkick.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
 		<script charset="utf-8">
+
+    var ua = window.navigator.userAgent.toLowerCase();
+		if ( /iphone/.test(ua) || /android/.test(ua) || /opera/.test(ua) || /bada/.test(ua) ) {
+		document.location.replace('index2.html');  //홈페이지 경로
+		}
+		
 		function eventonclick() {
     		window.open('html/result.html','검색결과',width='500px',height='400px');
   		}

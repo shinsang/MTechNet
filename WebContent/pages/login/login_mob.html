@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>TechNet Login</title>
+  <meta name="author" content="�ŷ´븮's">
+  <link rel="shortcut icon" href="http://static02.login_techNet.com/logo/hkdc/favicon.ico">
+  <link rel="icon" href="../../img/join/mLogo.png">
+  <link rel="stylesheet" type="text/css" media="all" href="../../stylesheets/login/login_styleSheet.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../../stylesheets/login/login_responsive.css">
+   				<script src="js/ajax.js" type="text/javascript"></script>
+		<script src="js/jquery-1.11.1.js"></script>
+		<script>
+		function refreshCount(){
+				var id=$('#login_id').val();
+ 				var passwd=$('#login_passWord').val();
+ 				var login_params='id='+id+'&passwd='+passwd;
+ 				$.get('pages/login/login_check.jsp',login_params,function(responseTxt){
+ 					var result=responseTxt.replace(/<.*?>/g,'').trim();
+ 					$('#id_hiddenbar').val(id);
+ 					$('#join_mypage').text('myPage');
+ 					$('#log_in_out').text('Log-Out');
+ 					$('#mainContent').load('pages/alarm/noReadMessage.html');
+ 					
+ 				});	
+ 				
+ 			}
+		function strip_tags (input, allowed) {
+		    allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join(''); // making sure the allowed arg is a string containing only tags in lowercase (<a><b><c>)
+		    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+		        commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+		    return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {        return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+		    });
+		}
+</script>
+</head>
+
+<body>
+	<br>
+	<br>
+	<br>
+	<div id="content">
+	<section id="container">
+		<span class="chyron"><em><a href="../../index.html">&laquo; back to the home</a></em></span>
+		<h2>Mocomsys TechNet Login</h2>
+		<form name="login_techNet" id="login_techNet-form" method="post" action="#">
+		<div id="wrapping" class="clearfix">
+			<section id="aligned">
+			<input type="text" name="id" id="login_id" placeholder="Your ID" autocomplete="off" tabindex="1" class="txtinput">
+			<input type="password" name="passWord1" id="login_passWord" placeholder="Write your password" autocomplete="off" tabindex="1" class="txtinput">
+			<!-- <input type="button" id="confirmID" class="btninput"  tabindex="1" value="Login" onclick="test()"/>-->
+			
+			</section>
+		</div>
+		</form>
+		</section>
+		<div>
+		<span class="chyron"><em><a href="index2.html">&laquo; Register</a></em></span>
+		<input type="button" id="confirmLogin" value="Login" onclick="refreshCount()"/>
+		<span id='test'></span>
+		</div>
+	
+	</div>
+
+</body>
+</html>

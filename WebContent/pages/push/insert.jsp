@@ -5,9 +5,9 @@
 <%@ page import="java.sql.*" %>	
 
 <%
-
+	String userid = request.getParameter("userid");
 	String regid = request.getParameter("regid");
-	System.out.println("regid = "+regid);
+	System.out.println("userid = "+userid+"\n"+"regid = "+regid);
 	try {
 
 		String driverName = "oracle.jdbc.driver.OracleDriver";	
@@ -26,7 +26,7 @@
 
 		Statement stmt = con.createStatement();			
 
-		String sql = "insert into gcm (regid) values ('" + regid + "')";
+		String sql = "insert into gcm (userid,regid) values ('"+userid+"','" + regid + "')";
 		
 		System.out.println("Sql = "+sql);
 		

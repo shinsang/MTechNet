@@ -1,0 +1,99 @@
+body {
+    padding-top: 55px;
+    padding-bottom: 70px;
+}
+#topBar{
+	z-index:98;
+	top:0px;
+	left:0px;
+	right:0px;
+	position : absolute;
+	margin:0 auto; 
+	!important; 
+	position:fixed;
+	display: block;
+	background: #DD0000;
+	height: 14%;
+	float: right;
+	
+}
+
+
+#footBar{
+	z-index:99;
+	bottom:0px;
+	float:right;
+	right:0px;
+	position:absolute ;
+	!important; 
+	position:fixed;
+	display: block;
+}
+
+#bar {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 50px;
+   background: yellow;
+}
+.btn-default {
+  color: #333333;
+  float:right;
+  margin: 10px ;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+.box-radius {
+	display: block;
+	margin : 0 auto;
+	
+   padding: 20% ;
+   padding-top: 50% ;
+   padding-bottom: 40% ;
+   border: 10px solid #cc0000;
+   color:white;
+   background: red;
+   width: 50%;
+   height: 50%;
+   border-radius: 1000px;
+   -moz-border-radius: 1000px;
+   -webkit-border-radius: 1000px;
+   -o-border-radius: 1000px;
+}
