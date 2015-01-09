@@ -29,9 +29,9 @@
 	-ms-text-overflow:ellipsis;
 	-moz-binding:url(/xe/ellipsis.xml#ellipsis)
 	}
-	.listTable{table-layout:fixed;white-space:nowrap;}
+	.listTable{table-layout:fixed;}
 	.listTable th{border-top: 1px solid #bcbcbc;padding: 5px 10px;}
-	.listTable td{padding: 5px 10px;}
+	.listTable td{padding: 5px 10px;word-break:break-all;}
 	.listTable tr{font-size:10pt;border:border:1px solid #E0E1DB;}
 	.listTable .number{text-align:center;font-size:7pt;font-family:verdana;}
 	.listTable .title{color:#616161;font-size:8pt;font-family:verdana;}
@@ -61,24 +61,15 @@
 		ArrayList<ContentsVO> civoList = new ArrayList<ContentsVO>();
 		ContentsDAO cdao = new ContentsDAO(da.getConnection());
 		civoList = cdao.getContentsList(search);
-
-// 	int count = 1;
-// 	int pageNum = 1;
-// 	int lastPageNum = 5;
-// //페이지 1이면 0~4까지 for문 돌고 페이지 2이면 5~9까지 for문을 돈다.
-// 	int startNum = 1;
-// 	int lastNum = 10;
-// 	int totalContentsSize = civoList.size();
-
-	
-// 	for(int i = 1; i<totalContentsSize+1; i++)
+	int titleMaxLength = 50;
+	int bodyMaxLegth = 120;
 	for (ContentsVO cvo : civoList)
 	{
-// 		ContentsVO cvo = civoList.get(i-1);
 		String title = URLEncoder.encode(cvo.getTitle(),"UTF-8");
 		String id = URLEncoder.encode(cvo.getId(),"UTF-8");
 		String body = URLEncoder.encode(cvo.getBody(),"UTF-8");
 		String status = URLEncoder.encode(cvo.getStatus(),"UTF-8");
+		
 	    System.out.println("제목 = "+title);
 	    System.out.println("본문 = "+body);
 	    System.out.println("상태 = "+status);
@@ -101,11 +92,19 @@
   }
   %>
  </td>
- <td width=800 colspan="2"><a href="pages/search/searchResult.jsp?title=<%=title %>&id=<%=id %>" target="_blank"><%=cvo.getTitle() %>  <img src="img/search/like_face.png" width="15" height="15"></a></td>
+ <td width=800 colspan="2"><a href="pages/search/searchResult.jsp?title=<%=title %>&id=<%=id %>" target="_blank"><%if(cvo.getTitle().length() > titleMaxLength){%>
+ <%=cvo.getTitle().substring(0,titleMaxLength)+"...." %>
+ <%}else{%>
+ <%=cvo.getTitle() %><%} %>
+   <img src="img/search/like_face.png" width="15" height="15"></a></td>
 </tr>
 <tr>
  <td></td>
- <td width=800 height=50 colspan="2" align=left valign=top><%=cvo.getBody() %></td>
+ <td width=800 height=50 colspan="2" align=left valign=top><%if(cvo.getBody().length() > bodyMaxLegth ){%>
+ <%=cvo.getBody().substring(0,bodyMaxLegth)+"...." %>
+ <%}else{ %>
+ <%=cvo.getBody() %><% } %>
+ </td>
 </tr>
 <tr>
  <td></td>
