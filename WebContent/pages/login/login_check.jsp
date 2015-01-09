@@ -49,6 +49,10 @@
 		rs.close();
 		stmt.close();
 		con.close();
+		if(rowcount==1){
+			session.setAttribute("id", id);
+	        System.out.println("MOB Session 성공");
+		}
 		 out.println("<font color='black' id='loginResult'>"+rowcount+"</font>");          
 	}catch (Exception e) {
 		System.out.println(e.toString());

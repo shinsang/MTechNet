@@ -69,25 +69,7 @@
 				<li><a href="#" class="messages">내가 받은 댓글</a></li>
 			</ul>
 		</li>
-		<%
-			String loginURL = "";
-			String loginTextValue = "";
-			
-			 session = request.getSession(true);
-			 
-			 if( session.getAttribute("id") != null)
-			 {
-				 loginTextValue = (String)session.getAttribute("id");
-				 loginURL = "../login/logout.jsp"; 
-				 System.out.println("session 로그 아웃 id = "+session.getAttribute("id"));
-			 }else{
-				 loginTextValue = "로그인";
-				 loginURL = "../login/login.jsp";
-				 System.out.println("session 로그인 id = "+session.getAttribute("id"));
-			 }
-		 %>
-		 
-		<li><a id=login href="<%=loginURL%>"><%=loginTextValue %></a></li>
+
        </div>
 </header>	
 </html>
