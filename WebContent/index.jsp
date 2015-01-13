@@ -19,7 +19,7 @@
 	 		}
 	 		$(document).ready(function() {
 	 			 $('#manual').click(function() {
-		 		 	 	$('#mainContent').load('index.jsp');
+		 		 	 	$('#mainContent').load('index.jsp');;
 		 		 	 	return false;
 		 		 	 });
 	 		 	 $('#writeBoard').click(function() {
