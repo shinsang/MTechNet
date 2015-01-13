@@ -9,18 +9,31 @@
 	 import="java.rmi.*" %>	
 		<script src="../../js/ajax.js" type="text/javascript"></script>
 		<script src="../../js/jquery-1.11.1.js"></script>
+<%@ page language="java" import="com.fasterxml.jackson.databind.JsonNode" %>
+<%@ page language="java" import="com.fasterxml.jackson.databind.ObjectMapper" %>
+<%@ page language="java" import="com.fasterxml.jackson.databind.ObjectReader" %>
 </head>
 <body>
 <%
-	String strTitle = request.getParameter("title");
+/*	String  = request.getParameter("title");
 	String strEngineer = request.getParameter("engineer");
 	String strCc = request.getParameter("cc");
 	String strTag = request.getParameter("tag");
 	String strFile = request.getParameter("file");
 	String strContentsBody = request.getParameter("contents");
+	*/
 	
-	session = request.getSession(true);
-	String strUserId = (String)session.getAttribute("id");
+	
+	String strTitle = "";
+	String strEngineer = "";
+	String strCc = "";
+	String strTag = "";
+	String strFile = "";
+	String strContentsBody = "";
+	
+	ObjectMapper mapper = new ObjectMapper();
+	String getRequestString = request.getParameter("post_val");
+	JsonNode node = mapper.readTree(getRequestString);
 	
 	long time = System.currentTimeMillis();
 	SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMddHHmmssSSS");

@@ -157,42 +157,46 @@ public void userInsert(UserVO user){
 		}
 	}
 
-	public int userCheck(String id, String password){
+	public String userCheck(String id, String password){
 
 		  Connection conn= null;
 		  PreparedStatement pstmt = null;
 		  ResultSet rs =null;
 		  String sql="";
 		  String dbpasswd="";
-		  int x = -1;
-		 
+		  String userName="";
+		  
+		  String R = "";	  
+		  		 
 		 try{
-		  sql = "SELECT USER_PASSWORD FROM USER_INFO WHERE USER_ID = ?";
-		  pstmt = _conn.prepareStatement(sql);
-		  pstmt.setString(1, id);
-		  rs = pstmt.executeQuery();
-		 
-		    if(rs.next()){
-		      dbpasswd =rs.getString("USER_PASSWORD");
-		      
-		      if(dbpasswd.equals(password))
-		        x=1; //인증성공
-		      else
-		        x=0; //비밀번호 틀림
-		      }else
-		        
-		      x=-1; //해당 아이디 없음
+			 sql = "SELECT USER_PASSWORD, USER_NAME FROM USER_INFO WHERE USER_ID = ?";
+			  pstmt = _conn.prepareStatement(sql);
+			  pstmt.setString(1, id);
+			  rs = pstmt.executeQuery();	 
+			  
+			  if(rs.next()){
+				  dbpasswd =rs.getString("USER_PASSWORD");
+			      userName = rs.getString("USER_Name");
+			      System.out.println("UserDAO userName : "+userName);
 
-		 }catch(Exception e){
-		 
+			      if(dbpasswd.equals(password)){
+			        R += "1"; //인증성공
+			      	R += "%";
+			      	R += userName;
+			      }
+			      else {
+			        R = "0"; //비밀번호 틀림
+			      }
+			    }
+			    else {
+			      R = "-1"; //해당 아이디 없음
+			    }
+		 }catch(Exception e){		 
 		  e.printStackTrace();
-
 		 }finally{
 		  
-		 }
-		 
-		 return x;
-		 
+		 }		 
+		 return R;		 
 		}
 	
 	private long getTime() {
