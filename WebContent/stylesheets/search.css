@@ -38,11 +38,12 @@
    
     /*-------------------------------------*/	
     .search-wrapper {
-        width: 380px;
-        height: 30px;
+        width: 390px;
+        height: 40px;
         padding: 10px;
         float:left;
-        margin: 15px auto 0px auto;
+        position: relative;
+        margin: 10px 0px 0px 0px;
         background: #444;
         background: rgba(0,0,0,.2);
         -moz-border-radius: 10px;
@@ -55,7 +56,7 @@
     
     .search-wrapper input {
         width: 320px;
-        height: 30px;
+        
         padding: 10px 5px;
         float: left;    
         font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
@@ -99,8 +100,8 @@
         border: 0;
         padding: 0;
         cursor: pointer;
-        width: 50px;
-        height: 30px;
+        width: 55px;
+        height: 38px;
         font: bold 16px/35px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
         text-transform: uppercase;
