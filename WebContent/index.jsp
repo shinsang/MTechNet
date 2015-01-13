@@ -6,7 +6,7 @@
 	<script src="js/dropkick.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
-	<script charset="utf-8">
+	<script charset="utf-8">	
 			function eventonclick() {
 	    		window.open('html/result.html','검색결과',width='500px',height='400px');
 	  		}
@@ -19,19 +19,11 @@
 	 		}
 	 		$(document).ready(function() {
 	 			 $('#manual').click(function() {
-		 		 	 	$('#mainContent').load('index.jsp');
+		 		 	 	$('#mainContent').load('pages/manual/manual.html');
 		 		 	 	return false;
 		 		 	 });
-	 		 	 $('#writeBoard').click(function() {
+	 		 	 $('#writeBoard').click(function() {	 		 		
 	 		 	 	$('#mainContent').load('pages/board/newWrite.jsp');
-	 		 	 	return false;
-	 		 	 });
-	 		 	 $('#Login').click(function() {
-	 		 	 	$('#mainContent').load('pages/login/login.jsp');
-	 		 	 	return false;
-	 		 	 });
-	 		 	 $('#joinTechNet').click(function() {
-	 		 	 	$('#mainContent').load('pages/join/JoinTechNet.html');
 	 		 	 	return false;
 	 		 	 });
 	 		 	 $('#bt_search').click(function() {
@@ -39,9 +31,54 @@
 					params='search='+encodeURI(encodeURIComponent(param)); 
 					$('#mainContent').load('pages/search/searchList.jsp', params);
 	 		 	 	return false;
-	 		 	 });
-	 		 	 
+	 		 	 });	 		 	 
 	 		});
+	 		
+	 		$(window).load( function() {
+	 			var userId = localStorage["userId"];
+	 			var userName = localStorage["userName"];
+	 			
+	 			var topBarMenuList = document.getElementById("TopBarMenu");
+	 			if(!userId) {
+	 				var userIdSlot = document.getElementById("userIdSlot");
+	 				userIdSlot.innerHTML = "로그인";
+	 				
+	 				topBarMenuList.appendChild(appendTopBarLiNode("로그인","signout","topBarLogin","pages/login/login.jsp"));
+	 				topBarMenuList.appendChild(appendTopBarLiNode("회원 가입","signout","topBarSignIn","pages/join/JoinTechNet.html"));
+	 			}
+	 			else {
+	 				var userIdSlot = document.getElementById("userIdSlot");
+	 				userIdSlot.innerHTML = userName + " 님";
+	 			
+	 				topBarMenuList.appendChild(appendTopBarLiNode("내 글 관리","messages","topBarMyWriteContents","#"));
+	 				topBarMenuList.appendChild(appendTopBarLiNode("받은 글 관리","messages","topBarMyReferenceContents","#"));
+	 				topBarMenuList.appendChild(appendTopBarLiNode("내정보 수정","documents","topBarMyInfoModify","#"));
+	 				topBarMenuList.appendChild(appendTopBarLiNode("로그 아웃","signout","topBarLogout","pages/login/logout.jsp"));	 				
+	 			}
+	 		});	 		
+	 		
+	 		function appendTopBarLiNode(Text,Class,Id,Href){
+	 			var liNode = document.createElement("li");;
+	 			var aNode = document.createElement("a");;
+	 			
+	 			var TextNode = document.createTextNode(Text);
+	 			var hrefAttr = document.createAttribute("href");
+	 			var ClassAttr = document.createAttribute("class");
+ 				var idAttr = document.createAttribute("id");
+ 				
+ 				hrefAttr.value = Href;	
+ 				ClassAttr.value = Class;
+	 			idAttr.value = Id;
+ 				
+ 				aNode.appendChild(TextNode);
+ 				aNode.setAttributeNode(hrefAttr);
+ 				aNode.setAttributeNode(ClassAttr);
+ 				aNode.setAttributeNode(idAttr);
+ 				
+ 				liNode.appendChild(aNode);	 			
+	 			return liNode;
+	 		}
+	 		
 	</script>
 	<link rel="shortcut icon" href="img/logo/mLogo.png" />
 	<!-- Header CSS -->
@@ -52,43 +89,22 @@
 </head>
 <header>
 	<div id="topBar">
-		<img src="img/logo/RandWLog.png" style="margin-left:20px;margin-right: 20px;float:left;width: 80px;height: 80px"/>
+		<a href="http://10.10.11.139:8080/MTechNet/index.jsp" target="_self">
+		<img src="img/logo/RandWLog.png" style="margin-left:20px;margin-right: 20px;float:left;width: 80px;height: 80px"/></a>
 		<form action="pages/search/searchList.jsp" name="searchList" class="search-wrapper cf" accept-charset="utf-8">
 	        <input type="search" name="search" id="search" placeholder="Search here..." required="" >
 	        <button type="submit" id="bt_search">검색</button>
 	    </form>   
 		<ul class="menu" >
-			<li><a href="#" id="manual">메뉴얼</a></li>
-			<li><a href="#" id="writeBoard">신규 작성</a></li>
-			<li><a href="#">My 페이지</a>
-				<ul>
-					<li><a href="#" class="documents">내가 쓴 글</a></li>
-					<li><a href="#" class="documents">내가 쓴 댓글</a></li>
-					<li><a href="#" class="messages">내가 받은 글</a></li>
-					<li><a href="#" class="messages">내가 받은 댓글</a></li>
+			<li><a href="#" id="manual">제품 메뉴얼</a></li>
+			<li><a href="#" id="writeBoard">글쓰기</a></li>
+			<li><a id="userIdSlot">로그인</a>
+				<ul id="TopBarMenu">
 				</ul>
-			</li>
-			<%
-				String loginURL = "";
-				String loginTextValue = "";
-				
-				 session = request.getSession(true);
-				 
-				 if( session.getAttribute("id") != null)
-				 {
-					 loginTextValue = (String)session.getAttribute("id");
-					 loginURL = "pages/login/logout.jsp"; 
-					 System.out.println("session 로그 아웃 id = "+session.getAttribute("id"));
-				 }else{
-					 loginTextValue = "로그인";
-					 loginURL = "pages/login/login.jsp";
-					 System.out.println("session 로그인 id = "+session.getAttribute("id"));
-				 }
-			 %>
-			<li><a id=login href="<%=loginURL%>"><%=loginTextValue %></a></li>
 		</ul>
     </div>
 </header>
+
 <body>
 	<br>
 	<br>
@@ -98,9 +114,6 @@
 	<hr style="width: 90%;float:right"/>
 	
     <div class="content" id="mainContent"><p>
-    <p>Main Page 입니다.</p><br> 
-    <p>location : /MTechNet/index4.jsp</p><br> 		
-	
     </div>
    <!-- <span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span><span><a>a</a></p></span>-->
 

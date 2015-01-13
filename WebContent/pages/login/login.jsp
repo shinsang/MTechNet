@@ -32,26 +32,28 @@
 			$.ajaxSetup({
 				url:"login_proc.jsp",		 
 				data : dataString,  // 넘겨질 데이타 
-			        type: "POST",
+			    type: "POST",
 				success:function(result) {	
-					console.log("result=["+result+"]");
 					var arr_data = trim(result).split("*");
+					var loginMsg= arr_data[0];
 					
-					var data1= arr_data[0];
-					var data2= arr_data[1];
-					if(trim(data1) == null || trim(data1) =="" ){
-						console.log("login if result data1=["+trim(data1)+"]");
-					// 받아온 결과가 없으면 아무 작업 안함
+					if((loginMsg)=="성공"){
+						var userId = arr_data[1];
+						var userName = arr_data[2];	
+							
+						localStorage.removeItem("userId"); // 먼저 해당 데이터 중복을 위해 속성 값 날림
+						localStorage.removeItem("userName"); // 먼저 해당 데이터 중복을 위해 속성 값 날림
+						localStorage.setItem("userId", userId);
+						localStorage.setItem("userName", userName);
+						
+						alert("Login Success - Login Id : "+localStorage["userId"]+", Login Name : "+ localStorage["userName"]);							
+						location.href="../../index.jsp?userId=" + userId;
 					}else{
-						console.log("login else result data1=["+trim(data1)+"]");
-						if((data2)=="성공"){
-	 						location.href=data1;							
-						}else{
-							console.log("data2["+data2+"]");
-						}
+						console.log("Login Fail - loginMsg : "+loginMsg);
 					}
+	
 					// 받아온 메세지 전달 (실패 메세지..)
-					$("#layer_ajax").html("<p style='color:red'>"+data2+"</p>");
+					$("#layer_ajax").html("<p style='color:red'>"+loginMsg+"</p>");
 					// 실패면 패스워드 데이타 지우고 포커스 이동
 					$("input[name=password]").val('');
 					$("input[name=password]").focus(); 
@@ -82,7 +84,6 @@
 		<form name="loginFrm" id="login_techNet-form" method="post">
 			<div id="wrapping" class="clearfix">
 				<section id="aligned">
-				<input type="hidden"  name="redirectURI"  value="<%="../../index.jsp"%>" >
 				<input type="text" name="id" id="id" placeholder="ID 입력" autocomplete="off" tabindex="1" class="txtinput">
 				<input type="password" name="password" id="passWord" placeholder="암호 입력" autocomplete="off" tabindex="1" class="txtinput">
 				<div id="layer_ajax"></div>
