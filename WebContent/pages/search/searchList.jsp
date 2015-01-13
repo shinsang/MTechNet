@@ -38,6 +38,11 @@
 	.listTable .title a{color:#616161;text-decoration:none;}
 	.listTable .date{font-size:7pt;font-family:verdana;text-align:left;color:#616161;text-align:center;}
 	
+	.image{position:relative;float:left;}
+	.image .text{position:absolute;top:0px;left:0px;width:0px;}
+	.image .text p{position:absolute;pont-size:1pt;}
+	.image .text span{position:absolute;letter-spacing:-5px;word-spacing:1px; font-size:0px;color:red;}
+	.image span{position:absolute;letter-spacing:-2px; font-weight:bold;font-size:12px;color:blue;}
 	
 	</style>
 </head>
@@ -92,13 +97,22 @@
   }
   %>
  </td>
+ <td width=30>
+ 	<div width=30 class="image">
+ 		<img src="img/search/like_face.png" width="18" height="18"></a>
+<!--  		<div class="text"> -->
+ 			<span>10,000</span>
+<!--  		</div> -->
+ 	</div>
+ </td>
  <td width=800 colspan="2"><a href="pages/search/searchResult.jsp?title=<%=title %>&id=<%=id %>" target="_blank"><%if(cvo.getTitle().length() > titleMaxLength){%>
  <%=cvo.getTitle().substring(0,titleMaxLength)+"...." %>
  <%}else{%>
  <%=cvo.getTitle() %><%} %>
-   <img src="img/search/like_face.png" width="15" height="15"></a></td>
+ </td>
 </tr>
 <tr>
+ <td></td>
  <td></td>
  <td width=800 height=50 colspan="2" align=left valign=top><%if(cvo.getBody().length() > bodyMaxLegth ){%>
  <%=cvo.getBody().substring(0,bodyMaxLegth)+"...." %>
@@ -110,8 +124,9 @@
  <td></td>
  <td></td>
  <td></td>
+ <td></td>
 </tr>
-<th colspan="3"></th>
+<th colspan="4"></th>
 <%
 	}
 	da.closeConnection();

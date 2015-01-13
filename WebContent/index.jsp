@@ -52,7 +52,7 @@
 </head>
 <header>
 	<div id="topBar">
-		<img src="img/logo/RandWLog.png" style="margin-left:5%;margin-right: 5%;float:left;width: 80px;height: 80px"/>
+		<img src="img/logo/RandWLog.png" style="margin-left:20px;margin-right: 20px;float:left;width: 80px;height: 80px"/>
 		<form action="pages/search/searchList.jsp" name="searchList" class="search-wrapper cf" accept-charset="utf-8">
 	        <input type="search" name="search" id="search" placeholder="Search here..." required="">
 	        <button type="submit" id="bt_search">검색</button>

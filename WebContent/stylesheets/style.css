@@ -24,11 +24,11 @@ http://vladimirkudinov.com
 }
 
 /* Menu */
-.menu {	
+.menu {
+	width: 350px;
 	height: 40px;
-	width: 330px;
-	margin-top : 2%;
-	margin-right : 5%;
+	margin-top : 20px;
+	margin-right : 20px;
 	background: #4c4e5a;
 	
 	float : right;
@@ -49,6 +49,7 @@ http://vladimirkudinov.com
 	float: left;
 	display: block;
 	height: 40px;
+	
 }
 
 /* Links */
