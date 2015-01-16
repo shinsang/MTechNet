@@ -15,25 +15,21 @@
 </head>
 <body>
 <%
-/*	String  = request.getParameter("title");
-	String strEngineer = request.getParameter("engineer");
-	String strCc = request.getParameter("cc");
-	String strTag = request.getParameter("tag");
-	String strFile = request.getParameter("file");
-	String strContentsBody = request.getParameter("contents");
-	*/
-	
-	
-	String strTitle = "";
-	String strEngineer = "";
-	String strCc = "";
-	String strTag = "";
-	String strFile = "";
-	String strContentsBody = "";
-	
-	ObjectMapper mapper = new ObjectMapper();
+	request.setCharacterEncoding("UTF-8");
 	String getRequestString = request.getParameter("post_val");
+%>
+
+<%	
+	ObjectMapper mapper = new ObjectMapper();
 	JsonNode node = mapper.readTree(getRequestString);
+
+	String strUserId = node.path("userId").asText();
+	String strTitle = node.path("title").asText();
+	String strEngineer = node.path("engineer").asText();
+	String strCc =node.path("cc").asText();
+	String strTag = node.path("tag").asText();
+	String strFile = node.path("file").asText();
+	String strContentsBody = node.path("contentBody").asText();
 	
 	long time = System.currentTimeMillis();
 	SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -78,36 +74,24 @@
 		System.out.println("CONTENTS_INFO Insert Sql = "+sql);		
 		stmt.executeQuery(sql);
 		
-		// My
-		sql = "insert into NEW_CONTENTS_QUEUE values('"+ContentsUid+"','"+strUserId+"',0)";
-		System.out.println("NEW_CONTENTS_QUEUE Insert Sql = "+sql);
-		stmt.executeQuery(sql);
-		
-		// Reference
-		if(strEngineer.length() >0)
-		{
-			sql = "insert into NEW_CONTENTS_QUEUE values('"+ContentsUid+"','"+strEngineer+"',2)";
-			System.out.println("NEW_CONTENTS_QUEUE Insert Sql = "+sql);
-			stmt.executeQuery(sql);			
-		}
-		
-		// CC
-		if(strCc.length() > 0)
-		{
-			sql = "insert into NEW_CONTENTS_QUEUE values('"+ContentsUid+"','"+strCc+"',3)";
+	
+		if(strEngineer.length() >0) { // Reference
+			sql = "insert into NEW_CONTENTS_QUEUE values('"+ContentsUid+"','"+strEngineer+"',2,'N')";
 			System.out.println("NEW_CONTENTS_QUEUE Insert Sql = "+sql);
 			stmt.executeQuery(sql);			
 		}
 		
 		
+		if(strCc.length() > 0) { // CC
+			sql = "insert into NEW_CONTENTS_QUEUE values('"+ContentsUid+"','"+strCc+"',4,'N')";
+			System.out.println("NEW_CONTENTS_QUEUE Insert Sql = "+sql);
+			stmt.executeQuery(sql);			
+		}		
 		
 		stmt.close();
 		con.close();
-//		response.sendRedirect("../../index.jsp");
 	}catch (Exception e) {
 		System.out.println(e.toString());
 		out.print("fail:3040");
-//		response.sendRedirect("../../index.jsp");
-	}
-	
+	}	
 %>
