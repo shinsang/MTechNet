@@ -71,22 +71,14 @@
 				var dataString = $("#newArticleForm").serialize();
 				alert(dataString);
 				$.ajax({
-					url:'newWrite_Insert.jsp',
+					url:'newArticle_insert.jsp',
 					type:'post',
 					timeout:1000,
 					data:dataString,
 					dataType:'text',
 					async:false,
 					success:function() {
-						alert("성공");
-// 						var val = $.trim(data);
-// 						alert("val = "+val);
-// 						if(val == "OK")	{
-// 							alert("문의 등록에 성공했습니다.");
-// 						}
-// 						else {
-// 							alert("문의 등록에 실패했습니다.");
-// 						}
+						alert("문의 등록에 성공 하였습니다.");
 					},
 					error:function() {
 						alert("문의 등록에 오류가 발생했습니다.");
