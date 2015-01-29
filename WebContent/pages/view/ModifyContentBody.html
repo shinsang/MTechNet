@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  	<title>MOCOMSYS TECHNET</title>
+  	<meta name="author" content="매력대리's">  
+</head>
+<body>
+
+
+
+<div class="panel panel-primary" id="ModifyContentBody">
+  <div class="panel-heading">
+    <div class="media" style="text-align:center;">
+		<h1 class="media-heading">
+		<br>
+		<strong>Modify Content</strong><small style="padding-left:10px;color:white">Ask questions</small></h1>
+		<br><br>		
+	</div>	
+  </div>
+  <div class="panel-body">
+  	<br>
+    <form name="newArticleForm" id="newArticleForm" class="form-horizontal" method="post" role="form">
+
+		   <div class="form-group text-muted">
+		     <label for="title" class="control-label col-sm-2 "><span class="glyphicon glyphicon-bullhorn"></span></label>
+		     <div class="col-sm-9">
+	            <input type="text" class="form-control" name="title" id="ar_title" placeholder="제목"/>
+		     </div>
+		   </div>		   
+		   <div class="form-group">
+		     <label for="engineer" class="control-label col-sm-2"><span class="glyphicon glyphicon-user"></span></label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="engineer" id="ar_engineer" placeholder="받을사람" onclick="receivePersonClick();">
+		     </div>
+		   </div>
+		   
+		   <div class="form-group">
+		     <label for="cc" class="control-label col-sm-2"><span class="glyphicon glyphicon-subtitles"></span></label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="cc" id="ar_cc" placeholder="참조" onclick="referencePersonClick();">
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <label for="tags" class="control-label col-sm-2"><span class="glyphicon glyphicon-tags"></span></label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="tag" id="ar_tag" placeholder="Tags" onclick="categoryTagClick();">
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <label for="file" class="control-label col-sm-2"><span class="glyphicon glyphicon-folder-open"></span></label>
+		     <div class="col-sm-9">
+		       <input type="file" name="file" id="ar_file" placeholder="첨부파일">
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <label for="contents" class="control-label col-sm-2"><span class="glyphicon glyphicon-inbox"></span></label>
+		     <div class="col-sm-9">
+		       <textarea class="form-control" rows="10" name="contentBody" id="ar_contentBody" placeholder="본문" tabindex="0"> </textarea>
+		     </div>
+		   </div>
+		   <div class="form-group"  style="text-align:right;">
+	       		<div class="col-sm-offset-2 col-sm-9">
+	         		<button type="button" class="btn btn-primary" onclick="Modifyclick()"><span class="glyphicon glyphicon-ok-sign"></span> Modify</button>
+	         	</div>
+    		</div>		   
+
+	</form>
+  </div>
+</div>
+
+
+</body>
+</html>
