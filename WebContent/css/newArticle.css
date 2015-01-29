@@ -31,3 +31,92 @@
 }
 
 	
+form {
+    padding: 10px;
+    width: 700px;
+}
+.tokenfield .token {
+    background-image: -webkit-linear-gradient(top, #428bca 0, #2d6ca2 100%);
+    background-image: linear-gradient(to bottom, #428bca 0, #2d6ca2 100%);
+    background-repeat: repeat-x;
+    background-color: #428bca;
+    border-color: #2b669a;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    color: #fff;
+    cursor: default;
+}
+.tokenfield .token .close {
+    color: #fff;
+    opacity: 0.8 filter: alpha(opacity=80);
+}
+.tokenfield .token.token-invalid {
+    color: #a94442 !important;
+    background-color: #f2dede !important;
+    background-image: none !important;
+    border: none;
+    border-bottom: 1px dotted #a94442 !important;
+}
+.tokenfield .token.token-invalid .close {
+    color: #600 !important;
+}
+.tokenfield .twitter-typeahead .form-control {
+    display: none;
+}
+/** main blocks **/
+#container { 
+display: block;
+max-width: 800px;
+margin: 0 auto; 
+margin-top: 5px; 
+margin-bottom: 66px;
+padding: 20px 0px; 
+background: #fff; 
+border-radius: 6px; 
+-webkit-border-radius: 6px; 
+-moz-border-radius: 6px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box; 
+box-sizing: border-box;  
+}
+
+textarea {
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 2px;
+border-color: #dedede;
+margin-bottom: 15px;
+font-size: 1em;
+padding: 11px 25px;
+/* padding-left: 100px; */
+width: 100%;
+height: 250px;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+h2 { 
+border-bottom: 1px solid #ddd; 
+border-top: 1px solid #ddd; 
+color: #000000;
+font-family: "Droid Serif", Georgia, serif; 
+font-size: 2em; 
+line-height: 1.8em; 
+font-weight: 500; 
+margin-top: 25px; 
+margin-bottom: 25px; 
+padding: 12px 0; 
+text-align: center; 
+background: #fff
+
+}
+	

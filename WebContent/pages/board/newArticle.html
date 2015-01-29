@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>새글 등록</title>
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" src="../../js/bootstrap-tokenfield.js"></script>
+<link href="../../css/bootstrap-tokenfield.css" type="text/css" rel="stylesheet">
+
+<link href="../../css/newArticle.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../js/newArticle.js" charset="UTF-8"></script>
+
+<script>	
+
+		
+		function get_text_val(id)
+		{
+			var res = "";
+			var set_id = "#" + id; 
+			res = $(set_id).val();
+			return res;
+		}
+		
+		var getParameter = function (param) {
+		    var returnValue;
+		    var url = location.href;
+		    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+		    for (var i = 0; i < parameters.length; i++) {
+		        var varName = parameters[i].split('=')[0];
+		        if (varName.toUpperCase() == param.toUpperCase()) {
+		            returnValue = parameters[i].split('=')[1];
+		            return decodeURIComponent(returnValue);
+		        }
+		    }
+		};
+		
+		function Completeclick() {
+			f = document.newArticleForm;
+			alert("completeclick()");
+			
+			if(get_text_val('title') == "")
+			{
+				f.title.focus();
+				alert("제목을 입력해주세요.");
+				return false;
+			}
+			else if(get_text_val('title') == "") // 로직 변경
+			{
+				f.engineer.focus();
+				alert("받을 사람을 입력해주세요.");
+				return false;
+			}
+			else if(get_text_val('title') == "") // 로직 변경
+			{
+				f.tag.focus();
+				alert("카테고리를 한개 이상 입력해주세요.");
+				return false;
+			}	
+			else
+			{	
+				alert("else------------");
+// 				var dataString = CreateContentsData();
+				var dataString = $("#newArticleForm").serialize();
+				alert(dataString);
+				$.ajax({
+					url:'newArticle_insert.jsp',
+					type:'post',
+					timeout:1000,
+					data:dataString,
+					dataType:'text',
+					async:false,
+					success:function() {
+						alert("문의 등록에 성공 하였습니다.");
+					},
+					error:function() {
+						alert("문의 등록에 오류가 발생했습니다.");
+					}				
+				});
+				return true;
+			}
+  		};
+		
+		function CreateContentsData()
+		{
+			var strTitle = get_text_val('title');
+			var strEngineer = get_text_val('engineer');
+			var strcc = get_text_val('cc');
+			var strTag = get_text_val('tag');
+			var strFile = get_text_val('file');
+			var strContentBody = get_text_val('contentBody'); 
+			var userId = "shinsang"; 
+			alert("strTitle="+strTitle);
+			alert("strEngineer="+strEngineer);
+			alert("strcc="+strcc);
+			alert("strTag="+strTag);
+			alert("strContentBody="+strContentBody);
+			alert("userId="+userId);
+			
+			var Node = [
+						 {name : "userId", value : userId}
+			            ,{name : "title", value : strTitle}
+			            ,{name : "engineer", value : strEngineer}
+			            ,{name : "cc", value : strcc}
+			            ,{name : "tag", value : strTag}
+			            ,{name : "file", value : strFile}
+			            ,{name : "contentBody", value : strContentBody}
+			            ];
+			return Node;
+		};
+		
+// 		$("#newArticle").click(function(e){
+// 			//아래 코드 실행
+// 			 var dataString = $("#newArticleForm").serialize();
+// 			//form 과 직렬화..
+// 			$.ajaxSetup({
+// 				url:"newWrite_Insert.jsp",		 
+// 				data : dataString,  // 넘겨질 데이타 
+// 			    type: "POST",
+// 				success:function(result) {	
+					
+// 				}		 
+// 			});	 
+			 
+// 			$.ajax();
+// 			$("#layer_ajax").show();		
+// 		}); 
+// });
+</script>
+
+</head>
+<body>
+<section id="container">
+	<h2>새글 등록</h2>
+	<form name="newArticleForm" id="newArticleForm" class="form-horizontal" method="post" role="form">
+		<fieldset disabled="disabled">
+		   <div class="form-group">
+		     <label for="title" class="control-label col-sm-3">제목</label>
+		     <div class="col-sm-9">
+	            <input type="text" class="form-control" name="title" id="title" placeholder="제목" />
+		     </div>
+		   </div>
+		   
+		   <div class="form-group">
+		     <label for="engineer" class="control-label col-sm-3">받을사람</label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="engineer" id="engineer" placeholder="받을사람">
+		     </div>
+		   </div>
+		   
+		   <div class="form-group">
+		     <label for="cc" class="control-label col-sm-3">참조</label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="cc" id="cc" placeholder="참조">
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <label for="tags" class="control-label col-sm-3">카테고리(Tags)</label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="tag" id="tag" placeholder="Tags">
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <label for="file" class="control-label col-sm-3">첨부 파일</label>
+		     <div class="col-sm-9">
+		       <input type="text" class="form-control" name="file" id="file" placeholder="첨부 파일">
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <label for="contents" class="control-label col-sm-3">내용</label>
+		     <div class="col-sm-9">
+		       <textarea class="txtblock" id="contentBody" rows="5" placeholder="새 글" name="contentBody" tabindex="0"> </textarea>
+		     </div>
+		   </div>
+		   <div class="form-group">
+		     <div class="col-sm-offset-3 col-sm-9">
+		         <button type="reset" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-transfer"></span> 다시 작성</button>
+		         <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" onclick="Completeclick()"><span class="glyphicon glyphicon-ok"></span> 확인</button>
+		     </div>
+		   </div>
+		 </fieldset>
+	</form>
+</section>
+</body>
+</html>
