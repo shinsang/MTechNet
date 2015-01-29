@@ -190,15 +190,15 @@ public class DataAccess {
 		String classDriver = "";
 		String url = "";
 		try {
-			System.out.println("connection JDBC");
+			//System.out.println("connection JDBC");
 			classDriver = setJDBCDriverName(_driverName);
-			System.out.println("classDriver = "+ classDriver);
+			//System.out.println("classDriver = "+ classDriver);
 			url = setUrlJDBC(_driverName, _dbName);
-			System.out.println("url = " +url);
+			//System.out.println("url = " +url);
 			Class.forName(classDriver);
-			System.out.println("Connection start");
+			//System.out.println("Connection start");
 			_connection = DriverManager.getConnection(url, _user, _password);
-			System.out.println("Connection start success");
+			//System.out.println("DB Connection start success");
 		} catch (SQLException e) {
 
 		} catch (ClassNotFoundException e) {
@@ -319,7 +319,7 @@ public class DataAccess {
 			//sb.append(_dbU)
 		}
 
-		System.out.println(sb.toString());
+		//System.out.println(sb.toString());
 		return sb.toString();
 	}
 

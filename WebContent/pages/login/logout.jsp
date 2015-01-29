@@ -9,7 +9,7 @@ history.back();
 }
 </script>
 <script>
-localStorage.removeItem("userId");  
-localStorage.removeItem("userName");
-location.href="../../index.jsp";
+//sessionStorage.removeItem("userId");
+//sessionStorage.removeItem("userName");
+location.replace("../../index.jsp");
 </script>

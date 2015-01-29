@@ -37,8 +37,7 @@ public class UserDAO
 		String sql = "SELECT * FROM USER_INFO";
 		try {
 			pstmt = _conn.prepareStatement(sql);
-			System.out.println("sql = " + sql);
-
+			System.out.println("UserDAO.java getAllUserInfoList() sql = " + sql);
 
 			rs = pstmt.executeQuery();
 			while (rs.next())
@@ -58,7 +57,7 @@ public class UserDAO
 				arrList.add(brvo);
 			}
 			for(int i = 0; i < arrList.size() ; i++){
-				System.out.println("List["+i+"]"+arrList.get(i).getId());;
+//				System.out.println("UserDAO.java List["+i+"]"+arrList.get(i).getId());;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,7 +81,6 @@ public class UserDAO
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		UserVO brvo = new UserVO();
-//		String sql = "SELECT A.CLNT_NO, B.CLNT_NM, A.LIM_A, A.APRV_DT, A.MSG_CD, B.CELLPHONE, B.EMAIL FROM ACTIONS A, CLNT_INFO B WHERE A.CLNT_NO = B.CLNT_NO and B.CLNT_NO = ?";
 		String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ?";
 
 		try {
@@ -105,7 +103,7 @@ public class UserDAO
 		} catch (SQLException e) {
 			StackTraceElement[] ste = e.getStackTrace();
 			for (int i=0;i < ste.length; i++) {
-				System.out.println(ste[i].toString());
+//				System.out.println(ste[i].toString());
 			}
 		} finally {
 			try {
@@ -155,11 +153,16 @@ public void userInsert(UserVO user){
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+			}			
+		}
 	}
 
 	public String userCheck(String id, String password){
 
-		  Connection conn= null;
 		  PreparedStatement pstmt = null;
 		  ResultSet rs =null;
 		  String sql="";
@@ -177,7 +180,7 @@ public void userInsert(UserVO user){
 			  if(rs.next()){
 				  dbpasswd =rs.getString("USER_PASSWORD");
 			      userName = rs.getString("USER_Name");
-			      System.out.println("UserDAO userName : "+userName);
+//			      System.out.println("UserDAO userName : "+userName);
 
 			      if(dbpasswd.equals(password)){
 			        R += "1"; //인증성공
@@ -194,15 +197,15 @@ public void userInsert(UserVO user){
 		 }catch(Exception e){		 
 		  e.printStackTrace();
 		 }finally{
-		  
+			 try {
+				pstmt.close();
+				} catch (SQLException e) {
+				}
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}		  
 		 }		 
 		 return R;		 
 		}
-	
-	private long getTime() {
-
-		Calendar rightNow = Calendar.getInstance();
-		return rightNow.getTimeInMillis();
-	}
-
 }

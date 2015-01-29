@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
-encoding//WebContent/pages/search/searchResult.jsp=UTF-8
+encoding//WebContent/pages/join/joinTechNet.jsp=UTF-8
+encoding//WebContent/pages/manage/manageTechNet.jsp=UTF-8
+encoding//WebContent/stylesheets/board/ContentsStyleSheet.css=UTF-8
 encoding//WebContent/stylesheets/board/board_styleSheet.css=UTF-8
 encoding//WebContent/stylesheets/login/login_styleSheet.css=UTF-8
 encoding//src/com/mocomsys/mtech/dao/CommentDAO.java=UTF-8

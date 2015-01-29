@@ -26,15 +26,15 @@ public class CommentDAO
     }
 
     public ArrayList<CommentVO> getCommentList(String parents_contents_id){
-    	System.out.println("[CommentDAO] getCommentList ["+parents_contents_id+"]");
+//    	System.out.println("[CommentDAO] getCommentList ["+parents_contents_id+"]");
     	PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		ArrayList<CommentVO> arrList = new ArrayList<CommentVO>();
-    	String sql = "SELECT * FROM COMMENT_INFO WHERE COMMENT_PARENTS_CONTENTS_ID=? ORDER BY COMMENT_REGIST_DATE DESC";
+    	String sql = "SELECT * FROM COMMENT_INFO WHERE COMMENT_PARENTS_CONTENTS_ID=? ORDER BY COMMENT_REGIST_DATE ASC";
 
     	try {
-    		System.out.println("- sql ["+sql+"]");
+ //   		System.out.println("- sql ["+sql+"]");
 	    	pstmt = _conn.prepareStatement(sql);
 
 			pstmt.setString(1, parents_contents_id);
@@ -57,38 +57,21 @@ public class CommentDAO
 
 				arrList.add(cvo);
 			}
-			for(int i = 0; i < arrList.size() ; i++){
+/*			for(int i = 0; i < arrList.size() ; i++){
 				System.out.println("List["+i+"]"+arrList.get(i).getTitle());;
 			}
-		} catch (SQLException e) {
+*/		} catch (SQLException e) {
+			System.out.println("getCommentList="+e.toString());
 			StackTraceElement[] ste = e.getStackTrace();
 			for (int i=0;i < ste.length; i++) {
 				System.out.println(ste[i].toString());
 			}
 		} finally {
-			try {
-				if(pstmt!=null){
-					pstmt.close();
-				}
-
-			} catch (SQLException e) {
-			}
-			try {
-				if(rs!=null){
-					rs.close();
-				}
-
-			} catch (SQLException e) {
-			}
+			try {if(pstmt!=null){pstmt.close();	}} catch (SQLException e) {	}
+			try {if(rs!=null){rs.close();}} catch (SQLException e) { }
 		}
 
 	return arrList;
-    }
-    
-	private long getTime() {
-
-		Calendar rightNow = Calendar.getInstance();
-		return rightNow.getTimeInMillis();
-	}
+    }  
 
 }

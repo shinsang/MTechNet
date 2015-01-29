@@ -4,7 +4,7 @@
 package com.mocomsys.mtech.vo;
 
 /**
- * @author shinsang
+ * @author shinsang&YungKi(used JoinProcess)
  *
  */
 public class UserVO

@@ -9,7 +9,6 @@ package com.mocomsys.mtech.vo;
  */
 public class ContentsVO
 {
-
     private String id;
     private String title;
 	private String regist_user_id;
@@ -22,12 +21,20 @@ public class ContentsVO
 	private String status;
     private String click_counts;
     private String recommend_counts;
-
-
+    
+    private String read_status; // 원래는 이러면 안되지만... 급하니 어쩔수 없다 이해해달라 -_-....
+    public String getReadstatus()
+    {
+    	return read_status;
+    }   
+    public void setReadstatus(String read_status)
+    {
+    	this.read_status = read_status;
+    }
+    
 	public String getId() {
 		return id;
 	}
-
 
 	public void setId(String id) {
 		this.id = id;
